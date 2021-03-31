@@ -1,0 +1,59 @@
+{
+  "name": "wiki-redesign",
+  "version": "1.0.0",
+  "description": "Wikipedia redesign example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bash ./config/bin/dev",
+    "lint-scss": "bash ./config/bin/lint-scss",
+    "lint-js": "bash ./config/bin/lint-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lenabaidakova/wiki-redesign.git"
+  },
+  "author": "e.baidakova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lenabaidakova/wiki-redesign/issues"
+  },
+  "homepage": "https://github.com/lenabaidakova/wiki-redesign#readme",
+  "devDependencies": {
+    "@babel/core": "7.13.13",
+    "@babel/preset-env": "7.13.12",
+    "@babel/preset-react": "7.13.13",
+    "@funboxteam/eslint-config": "5.3.0",
+    "@funboxteam/scss-imports-loader": "2.1.1",
+    "@funboxteam/scss-lint-config": "3.0.0",
+    "@funboxteam/scss-vars-loader": "2.2.0",
+    "@hot-loader/react-dom": "17.0.1",
+    "autoprefixer": "9.7.6",
+    "babel-loader": "8.2.2",
+    "css-loader": "5.2.0",
+    "eslint": "7.23.0",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "5.3.1",
+    "husky": "6.0.0",
+    "lint-staged": "10.5.4",
+    "postcss": "8.2.8",
+    "postcss-loader": "3.0.0",
+    "postcss-url": "8.0.0",
+    "prop-types": "15.7.2",
+    "sass": "1.32.8",
+    "sass-loader": "11.0.1",
+    "style-loader": "2.0.0",
+    "stylelint": "13.12.0",
+    "webpack": "5.28.0",
+    "webpack-cli": "4.6.0",
+    "webpack-dev-server": "3.11.2"
+  },
+  "dependencies": {
+    "bem-react-helper": "1.2.2",
+    "core-js": "3.9.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hot-loader": "4.13.0",
+    "react-router-dom": "5.2.0"
+  }
+}

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+NODE_ENV=development node $PWD/node_modules/webpack/bin/webpack.js serve --progress --hot --inline --config $PWD/config/webpack.config.dev.js
