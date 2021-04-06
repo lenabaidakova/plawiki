@@ -1,22 +1,21 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 
-import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
 
 import ScrollToTop from 'app/components/scroll-to-top';
-import RouteMain from 'app/components/route-main';
 
 import Main from 'app/views/main';
-import Secondary from 'app/views/secondary';
+import Article from 'app/views/article';
 
 const AppStates = () => (
   <BrowserRouter>
     <ScrollToTop/>
 
     <Switch>
-      <RouteMain exact component={Main} path="/"/>
+      <Route exact component={Main} path="/"/>
 
-      <RouteMain exact component={Secondary} path="/secondary"/>
+      <Route component={Article} path="/wiki/:title"/>
 
       {/* Redirect to the main page */}
       <Redirect to="/"/>

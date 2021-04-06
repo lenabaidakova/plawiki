@@ -1,0 +1,17 @@
+/* stylelint-disable selector-max-type */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap&format=woff');
+
+html, body {
+  min-height: 100%;
+}
+
+.body {
+  margin: 0;
+  color: #3a3a3a;
+  font-family: 'PT Serif', 'Times New Roman', 'Georgia', serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: #f8f8fa;
+}

@@ -1,0 +1,9 @@
+@import '../input.vars';
+
+.#{$b}__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $buttonWidth;
+  height: 100%;
+}

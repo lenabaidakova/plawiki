@@ -1,0 +1,34 @@
+/*
+'mw-parser-output' is a wiki's class for content, there is a possibility
+to change this class in request https://www.mediawiki.org/wiki/API:Parsing_wikitext
+by parameter 'wrapoutputclass' but with this parameter the request became much slower
+*/
+.#{$b} .mw-parser-output {
+  padding: 0 32px;
+  text-align: justify;
+
+  a {
+    &:hover {
+      color: #0846ad;
+    }
+
+    &:not([class]) {
+      text-decoration: underline;
+      color: #3a3a3a;
+    }
+  }
+
+  .infobox {
+    margin: .8em 0 .8em 1.6em;
+    padding: .6em;
+    font-size: 80%;
+
+    th {
+      padding-right: .8em;
+    }
+
+    td {
+      padding-bottom: .8em;
+    }
+  }
+}

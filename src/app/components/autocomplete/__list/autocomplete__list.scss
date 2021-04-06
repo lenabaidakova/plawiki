@@ -1,0 +1,15 @@
+.#{$b}__list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  box-shadow: 0 4px 4px 0 #ccc;
+  background-color: #fff;
+}

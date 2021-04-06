@@ -1,0 +1,7 @@
+.#{$b} {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  max-width: 1600px;
+  min-height: 100vh;
+  margin: auto;
+}
