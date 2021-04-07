@@ -2,11 +2,12 @@
   display: block;
   width: 100%;
   padding: 12px 16px;
+  box-sizing: border-box;
   text-align: left;
   font-size: 16px;
 
   &:hover,
   &:focus {
-    background-color: #f5f6f8;
+    background-color: #fff;
   }
 }
