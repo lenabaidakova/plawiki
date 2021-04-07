@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Page from 'app/components/page';
+import Aside from 'app/components/aside';
 import Logo from 'app/components/logo';
 import Autocomplete from 'app/components/autocomplete';
+
+import { HEADER_ID } from 'app/constants/common';
+
+import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
 export default class MainLayout extends React.PureComponent {
   state = {
@@ -21,6 +26,10 @@ export default class MainLayout extends React.PureComponent {
 
     script.src = `/mw.js`;
     document.body.appendChild(script);
+  }
+
+  componentDidUpdate() {
+    scrollToAnchor();
   }
 
   onChange = value => this.setState({ value }, this.onSearch);
@@ -46,21 +55,21 @@ export default class MainLayout extends React.PureComponent {
   };
 
   render() {
-    const { children, toc } = this.props;
+    const { children, toc, mods: { loading} } = this.props;
     const { searchList, value } = this.state;
 
     return (
-      <Page>
-        <aside className="page__aside">
+      <Page mods={{ loading }}>
+        <Aside mix="page__aside">
           <div className="page__logo-wrapper">
             <Logo mix="page__logo"/>
           </div>
 
           {toc}
-        </aside>
+        </Aside>
 
         <div className="page__body">
-          <header className="page__header">
+          <header className="page__header" id={HEADER_ID}>
             <form onSubmit={this.onSubmit}>
               <Autocomplete
                 onChange={this.onChange}
@@ -72,7 +81,15 @@ export default class MainLayout extends React.PureComponent {
           </header>
 
           <main className="page__main">
-            {children}
+            {
+              loading && <span>loading</span>
+            }
+
+            {
+              !loading && (
+                <div>{children}</div>
+              )
+            }
           </main>
 
           <footer className="page__footer">Footer</footer>

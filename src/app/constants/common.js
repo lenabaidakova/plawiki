@@ -6,3 +6,5 @@ export const KEY = {
   LEFT: 37,
   RIGHT: 39,
 };
+
+export const HEADER_ID = 'header';

@@ -1,0 +1,12 @@
+.#{$b}_type_primary {
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &.#{$b}_active {
+    color: #1976d2;
+  }
+
+}

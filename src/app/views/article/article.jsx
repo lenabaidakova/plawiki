@@ -7,6 +7,8 @@ import Contents from 'app/components/contents';
 export default class Article extends React.Component {
   state = {
     sections: [],
+    isLoading: true,
+    html: '',
   };
 
   componentDidMount() {
@@ -21,23 +23,18 @@ export default class Article extends React.Component {
 
   getPage = (pageid) => {
     window.RLCONF = {wgServer: "en.wikipedjia.org", wgScript: "/tes", wgScriptPath: "/tes"};
+
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=parse&format=json&prop=text|modules|jsconfigvars|encodedjsconfigvars|categorieshtml|sections&disableeditsection&page=${pageid}&useskin=modern&disabletoc&mobileformat`)
       .then(response => response.json())
       .then(data => {
-        this.content.innerHTML = data.parse.text['*'];
-
         this.renderContent(data.parse.sections);
-        //this.setState({ sections: data.parse.sections });
-
-        return data;
-      })
-      .then(data => {
-
-        //window.RLPAGEMODULES = data.parse.modules;
         window.mw.loader.load(data.parse.modules);
         window.mw.loader.load(data.parse.modulestyles, "text/css");
 
-        return data;
+
+        // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.loader-method-using
+        window.mw.loader.using([...data.parse.modulestyles, ...data.parse.modules])
+          .always(() => this.setState({ html: data.parse.text['*'], isLoading: false }));
       })
   };
 
@@ -76,11 +73,16 @@ export default class Article extends React.Component {
   };
 
   render() {
-    const { sections } = this.state;
+    const { sections, isLoading, html } = this.state;
 
     return (
-      <MainLayout toc={<Contents list={sections}/>}>
-        <WikiArticle ref={r => (this.content = r)}/>
+      <MainLayout
+        mods={{ loading: isLoading }}
+        toc={<Contents list={sections}/>}
+      >
+        <WikiArticle>
+          <span dangerouslySetInnerHTML={{__html: html}}/>
+        </WikiArticle>
       </MainLayout>
     );
   }

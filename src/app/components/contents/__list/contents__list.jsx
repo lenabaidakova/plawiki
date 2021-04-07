@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Contents__List = ({ item }) => {
-  const { children } = item;
+import Link from 'app/components/link';
+
+const Contents__List = props => {
+  const { item } = props;
   let list = null;
 
-  if (children.length) {
+  if (item.children.length) {
     list = (
       <ul className="contents__list">
         {
-          children.map(i => (
+          item.children.map(i => (
             <Contents__List item={i} key={i.index} />
           ))
         }
@@ -19,10 +21,15 @@ const Contents__List = ({ item }) => {
 
   return (
     <li className="contents__item">
-      <a href={`#${item.anchor}`}>
+      <Link
+        mods={{ type: 'primary' }}
+        activeClassName="link_active"
+        to={`#${item.anchor}`}
+        isActive={(match, location) => location.hash === `#${item.anchor}`}
+      >
         {/* use dangerouslySetInnerHTML because could be markup in response */}
         <span dangerouslySetInnerHTML={{__html: item.name}}/>
-      </a>
+      </Link>
 
       {list}
     </li>
