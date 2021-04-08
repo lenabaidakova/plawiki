@@ -5,7 +5,8 @@ export default () => {
 
   if (!hash) return;
 
-  const element = document.querySelector(hash);
+  const id = hash.slice(1);
+  const element = document.getElementById(id);
 
   if (!element) return;
 
