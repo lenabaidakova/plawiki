@@ -1,9 +1,9 @@
 .#{$b}__aside {
-  max-width: 400px;
+  flex: 1;
   position: sticky;
   top: 0;
+  max-width: 400px;
+  max-height: 100vh;
   margin-right: 8px;
   font-size: 16px;
-  max-height: 100vh;
-  flex: 1;
 }

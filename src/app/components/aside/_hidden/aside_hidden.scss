@@ -1,7 +1,7 @@
 .#{$b}_hidden {
   .#{$b}__body {
-    width: 0;
     transform: translateX(-100%);
+    width: 0;
     transition: width .1s ease, transform .1s ease;
   }
 }

@@ -1,7 +1,7 @@
 .#{$b}__body {
   overflow: auto;
+  box-sizing: border-box;
   max-height: 100vh;
   padding: 0 24px;
-  box-sizing: border-box;
   transition: width .1s ease, transform .1s ease;
 }

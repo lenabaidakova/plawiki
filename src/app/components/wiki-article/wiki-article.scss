@@ -3,18 +3,29 @@
 to change this class in request https://www.mediawiki.org/wiki/API:Parsing_wikitext
 by parameter 'wrapoutputclass' but with this parameter the request became much slower
 */
+
+/* unfortunately, Wikipedia uses important in styles */
+/* stylelint-disable declaration-no-important */
 .#{$b} .mw-parser-output {
   padding: 0 32px;
   text-align: justify;
 
   a {
+    text-decoration: underline !important;
+    color: #3a3a3a;
+
     &:hover {
       color: #0846ad;
     }
 
-    &:not([class]) {
-      text-decoration: underline;
+    &:link,
+    &[class] {
+      text-decoration: underline !important;
       color: #3a3a3a;
+
+      &:hover {
+        color: #0846ad;
+      }
     }
   }
 
