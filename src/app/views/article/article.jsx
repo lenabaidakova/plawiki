@@ -22,10 +22,13 @@ export default class Article extends React.Component {
   }
 
   getPage = (pageid) => {
-    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=parse&format=json&prop=text|modules|jsconfigvars|sections&disableeditsection&page=${pageid}&useskin=modern&disabletoc&mobileformat`)
+    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=parse&format=json&redirects&prop=text|modules|jsconfigvars|sections&disableeditsection&page=${pageid}&useskin=modern&disabletoc&mobileformat`)
       .then(response => response.json())
       .then(data => {
         this.renderContent(data.parse.sections);
+
+        // https://www.mediawiki.org/wiki/API:Parsing_wikitext
+        mw.config.set(data.parse.jsconfigvars);
 
         // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.loader-method-using
         window.mw.loader.using([...data.parse.modules, ...data.parse.modulestyles])
