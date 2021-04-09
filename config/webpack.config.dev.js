@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /app\/vendors/],
         loader: 'babel-loader',
         options: {
           presets: [

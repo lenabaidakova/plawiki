@@ -22,18 +22,13 @@ export default class Article extends React.Component {
   }
 
   getPage = (pageid) => {
-    window.RLCONF = {wgServer: "en.wikipedjia.org", wgScript: "/tes", wgScriptPath: "/tes"};
-
-    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=parse&format=json&prop=text|modules|jsconfigvars|encodedjsconfigvars|categorieshtml|sections&disableeditsection&page=${pageid}&useskin=modern&disabletoc&mobileformat`)
+    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=parse&format=json&prop=text|modules|jsconfigvars|sections&disableeditsection&page=${pageid}&useskin=modern&disabletoc&mobileformat`)
       .then(response => response.json())
       .then(data => {
         this.renderContent(data.parse.sections);
-        window.mw.loader.load(data.parse.modules);
-        window.mw.loader.load(data.parse.modulestyles, "text/css");
-
 
         // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.loader-method-using
-        window.mw.loader.using([...data.parse.modulestyles, ...data.parse.modules])
+        window.mw.loader.using([...data.parse.modules, ...data.parse.modulestyles])
           .always(() => this.setState({ html: data.parse.text['*'], isLoading: false }));
       })
   };

@@ -16,18 +16,6 @@ export default class MainLayout extends React.PureComponent {
     searchList: [],
   };
 
-  componentDidMount() {
-    /*
-      mw module for loading modules from Wikipedia
-      https://www.mediawiki.org/wiki/ResourceLoader/Core_modules
-      https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw
-    */
-    const script = document.createElement('script');
-
-    script.src = `/mw.js`;
-    document.body.appendChild(script);
-  }
-
   componentDidUpdate() {
     scrollToAnchor();
   }
