@@ -46,4 +46,10 @@ by parameter 'wrapoutputclass' but with this parameter the request became much s
   h1, h2 {
     padding-bottom: 8px;
   }
+
+  pre,
+  .mw-code {
+    padding: 1em;
+    white-space: pre-wrap;
+  }
 }
