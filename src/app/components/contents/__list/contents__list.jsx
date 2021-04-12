@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Link from 'app/components/link';
+import List, { List__Item } from 'app/components/list';
 
 const Contents__List = props => {
   const { item } = props;
@@ -9,18 +10,18 @@ const Contents__List = props => {
 
   if (item.children.length) {
     list = (
-      <ul className="contents__list">
+      <List mods={{ type: 'primary'}}>
         {
           item.children.map(i => (
             <Contents__List item={i} key={i.index} />
           ))
         }
-      </ul>
+      </List>
     );
   }
 
   return (
-    <li className="contents__item">
+    <List__Item>
       <Link
         mods={{ type: 'primary' }}
         activeClassName="link_active"
@@ -32,7 +33,7 @@ const Contents__List = props => {
       </Link>
 
       {list}
-    </li>
+    </List__Item>
   );
 };
 

@@ -76,7 +76,7 @@ export default class Article extends React.Component {
     return (
       <MainLayout
         mods={{ loading: isLoading }}
-        toc={<Contents list={sections}/>}
+        toc={<Contents headline="Contents" list={sections}/>}
       >
         <WikiArticle>
           <span dangerouslySetInnerHTML={{__html: html}}/>

@@ -53,7 +53,7 @@ export default class MainLayout extends React.PureComponent {
             <Logo mix="page__logo"/>
           </div>
 
-          {toc}
+          <div className="aside__content">{toc}</div>
         </Aside>
 
         <div className="page__body">

@@ -1,0 +1,21 @@
+.#{$b}__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  padding: 8px 4px;
+  text-align: left;
+  font-size: 18px;
+  border-bottom: 1px solid $grey;
+  color: $greyDark;
+
+  &::after {
+    content: '';
+    transform: rotate(45deg);
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+  }
+}

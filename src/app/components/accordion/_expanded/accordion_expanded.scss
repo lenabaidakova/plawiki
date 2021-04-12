@@ -1,0 +1,9 @@
+.#{$b}_expanded {
+  .#{$b}__summary::after {
+    transform: rotate(135deg);
+  }
+
+  .#{$b}__details {
+    display: block;
+  }
+}
