@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 function isCompatible(ua) {
   return !!((function() {
     'use strict';
