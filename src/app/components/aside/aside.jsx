@@ -1,9 +1,8 @@
 import React from 'react';
-import Button from 'app/components/button';
+import PropTypes from 'prop-types';
 
 export default class Aside extends React.Component {
   state = {
-    isSidebarHidden: false,
     scrollTop: 0,
   };
 
@@ -23,30 +22,20 @@ export default class Aside extends React.Component {
     this.setState({ scrollTop: document.scrollTop });
   };
 
-  onToggleSidebar = () => {
-    this.setState(prevState => ({ isSidebarHidden: !prevState.isSidebarHidden }));
-  };
-
   render() {
     const { children} = this.props;
-    const { isSidebarHidden } = this.state;
 
     return (
-      <aside className={b('aside', this.props, { hidden: isSidebarHidden })}>
-        <Button
-          mix="aside__controller"
-          onClick={this.onToggleSidebar}
-        >Show sidebar</Button>
-
-        <div
-          className="aside__body"
-          ref={r => (this.body = r)}
-        >{children}</div>
+      <aside
+        className={b('aside', this.props)}
+        ref={r => (this.body = r)}
+      >
+        {children}
       </aside>
     );
   }
 }
 
-Aside.defaultProps = {};
-
-Aside.propTypes = {};
+Aside.propTypes = {
+  children: PropTypes.node,
+};
