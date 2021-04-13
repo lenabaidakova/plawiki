@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Page from 'app/components/page';
@@ -48,40 +48,36 @@ export default class MainLayout extends React.PureComponent {
 
     return (
       <Page mods={{ loading }}>
-        <Aside mix="page__aside">
-          <div className="page__logo-wrapper">
-            <Logo mix="page__logo"/>
-          </div>
+        <header className="page__header" id={HEADER_ID}>
+          <Logo mix="page__logo"/>
+        </header>
 
-          <div className="aside__content">{toc}</div>
+        <Aside mix="page__aside">
+          {toc}
         </Aside>
 
-        <div className="page__body">
-          <header className="page__header" id={HEADER_ID}>
-            <form onSubmit={this.onSubmit}>
-              <Autocomplete
-                onChange={this.onChange}
-                onSearch={this.onSearch}
-                value={value}
-                list={searchList}
-              />
-            </form>
-          </header>
+        <form className="page__search" onSubmit={this.onSubmit}>
+          <Autocomplete
+            onChange={this.onChange}
+            onSearch={this.onSearch}
+            value={value}
+            list={searchList}
+          />
+        </form>
 
-          <main className="page__main">
-            {
-              loading && <span>loading</span>
-            }
+        <main className="page__main">
+          {
+            loading && <span>loading</span>
+          }
 
-            {
-              !loading && (
-                <div>{children}</div>
-              )
-            }
-          </main>
+          {
+            !loading && (
+              <Fragment>{children}</Fragment>
+            )
+          }
+        </main>
 
-          <footer className="page__footer">Footer</footer>
-        </div>
+        <footer className="page__footer">Footer</footer>
       </Page>
     );
   }

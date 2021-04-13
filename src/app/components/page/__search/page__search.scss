@@ -1,0 +1,10 @@
+@import '../page.vars';
+
+.#{$b}__search {
+  grid-area: search;
+  position: sticky;
+  top: 0;
+  padding: 0 $offsetHrz $offsetVrt;
+  box-shadow: 0 4px 4px 0 $greyLight;
+  background-color: $greyLight;
+}

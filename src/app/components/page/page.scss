@@ -1,5 +1,16 @@
 .#{$b} {
-  display: flex;
-  min-height: 100vh;
-  margin: auto;
+  display: grid;
+  max-width: 1300px;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "sidebar header search"
+    "main main main"
+    "footer footer footer";
+
+  @include respond-to($tablet) {
+    grid-template-areas:
+      "header search"
+      "sidebar main"
+      "footer footer";
+  }
 }

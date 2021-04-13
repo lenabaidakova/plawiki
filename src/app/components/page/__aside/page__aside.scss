@@ -1,10 +1,19 @@
+@import '../page.vars';
+
 .#{$b}__aside {
-  position: sticky;
-  top: 0;
-  width: 40vw;
-  min-width: 300px;
-  max-width: 400px;
-  max-height: 100vh;
-  margin-right: 8px;
-  font-size: 16px;
+  grid-area: sidebar;
+  box-sizing: border-box;
+  padding: 0 $offsetHrz/2;
+
+  @include respond-to($tablet) {
+    position: sticky;
+    top: 0;
+    width: 30vw;
+    min-width: 296px;
+    max-width: 344px;
+  }
+
+  @include respond-to($desktop) {
+    padding: 0 $offsetHrz;
+  }
 }

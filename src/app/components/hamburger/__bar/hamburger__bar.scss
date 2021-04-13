@@ -1,0 +1,29 @@
+.#{$b}__bar {
+  $offset: 8px;
+
+  position: relative;
+
+  &,
+  &::before,
+  &::after {
+    height: 3px;
+    background: $fontColor;
+    transition: top .2s .2s, transform .2s, background .2s;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  &::before {
+    top: -$offset;
+  }
+
+  &::after {
+    top: $offset;
+  }
+}

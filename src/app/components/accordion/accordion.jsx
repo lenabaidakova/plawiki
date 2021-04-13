@@ -27,7 +27,7 @@ export default class Accordion extends React.Component {
         <h3 className="accordion__headline">
           <Button
             mix="accordion__summary"
-            ariaExpanded={isExpanded}
+            aria-expanded={isExpanded}
             aria-controls={this.ariaControlsId}
             id={this.defaultId}
             onClick={this.onToggle}

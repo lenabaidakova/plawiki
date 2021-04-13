@@ -79,7 +79,7 @@ export default class Article extends React.Component {
         toc={<Contents headline="Contents" list={sections}/>}
       >
         <WikiArticle>
-          <span dangerouslySetInnerHTML={{__html: html}}/>
+          <div dangerouslySetInnerHTML={{__html: html}}/>
         </WikiArticle>
       </MainLayout>
     );

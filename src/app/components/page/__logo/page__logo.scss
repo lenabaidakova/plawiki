@@ -1,3 +1,7 @@
+@import '../page.vars';
+
 .#{$b}__logo {
-  max-width: 128px;
+  display: block;
+  margin: auto;
+  height: $logoHeight;
 }

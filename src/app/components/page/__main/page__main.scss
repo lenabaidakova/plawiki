@@ -1,4 +1,13 @@
+@import '../page.vars';
+
 .#{$b}__main {
-  max-width: 1300px;
-  border-left: 1px solid $grey;
+  grid-area: main;
+  box-sizing: border-box;
+  max-width: 1000px;
+  min-height: 100vh;
+  padding: 0 $offsetHrz / 2;
+
+  @include respond-to($tablet) {
+    padding: 0 $offsetHrz;
+  }
 }

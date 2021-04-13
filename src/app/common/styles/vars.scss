@@ -6,3 +6,13 @@ $blackLight: #3a3a3a;
 $blue: #0846ad;
 
 $fontColor: $blackLight;
+
+$offsetField: 16px;
+
+$phone: '(min-width: 321px)';
+$tablet: '(min-width: 769px)';
+$desktop: '(min-width: 1025px)';
+$desktopMaximum: '(min-width: 1441px)';
+$desktopUltra: '(min-width: 1921px)';
+
+$retina: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';

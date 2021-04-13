@@ -1,9 +1,13 @@
+@import '../page.vars';
+
 .#{$b}__header {
-  position: sticky;
-  z-index: 1;
-  top: 0;
-  margin-bottom: 40px;
-  padding: 16px 32px;
-  box-shadow: 0 4px 4px 0 #f8f8fa;
-  background-color: #f8f8fa;
+  display: flex;
+  align-items: center;
+  grid-area: header;
+  box-sizing: border-box;
+  padding: $offsetVrt/2 $offsetHrz/2;
+
+  @include respond-to($tablet) {
+    padding: $offsetVrt $offsetHrz;
+  }
 }
