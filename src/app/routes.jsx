@@ -5,7 +5,6 @@ import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
 
 import ScrollToTop from 'app/components/scroll-to-top';
 
-import Main from 'app/views/main';
 import Article from 'app/views/article';
 
 const AppStates = () => (
@@ -13,12 +12,10 @@ const AppStates = () => (
     <ScrollToTop/>
 
     <Switch>
-      <Route exact component={Main} path="/"/>
-
       <Route component={Article} path="/wiki/:title"/>
 
       {/* Redirect to the main page */}
-      <Redirect to="/"/>
+      <Redirect to="/wiki/Main_Page"/>
     </Switch>
   </BrowserRouter>
 );
