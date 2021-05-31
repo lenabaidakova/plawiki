@@ -21,7 +21,7 @@
   @include placeholder {
     opacity: 1;
     font-size: inherit;
-    color: #6a6a6a;
+    color: $greyDark;
   }
 
   &::-ms-clear {

@@ -30,7 +30,11 @@ export default class Input extends React.Component {
 
         {
           type === 'search' && (
-            <Button mix="input__button" onClick={onButtonClick}/>
+            <Button
+              mods={{ icon: 'magnifier' }}
+              mix="input__button"
+              onClick={onButtonClick}
+            />
           )
         }
       </div>

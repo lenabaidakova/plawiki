@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import SVGIcon from 'app/components/svg-icon';
+
 const Button = props => {
   const { children, mods, mix, ...rest } = props;
 
@@ -8,8 +10,23 @@ const Button = props => {
     <button
       className={b('button', { mods, mix })}
       {...rest}
-    >{children}</button>
+    >
+      {children}
+
+      {
+        mods.icon && (
+          <SVGIcon
+            mods={{ type: mods.icon }}
+            mix="button__icon"
+          />
+        )
+      }
+    </button>
   );
+};
+
+Button.defaultProps = {
+  mods: {},
 };
 
 Button.propTypes = {
