@@ -6,9 +6,13 @@ html, body {
 .body {
   margin: 0;
   font-family: 'PT Serif', 'Times New Roman', Georgia, serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.5em;
   background-color: #f8f8fa;
   color: #3a3a3a;
+
+  @include respond-to($tablet) {
+    font-size: 18px;
+  }
 }

@@ -5,14 +5,15 @@ import Button from 'app/components/button';
 
 const Hamburger = props => {
   const { id, mods: { open }, onClick } = props;
+  const menuTitle = open ? 'Close menu' : 'Open menu';
 
   return (
     <Button
       mix={b('hamburger', props)}
       aria-expanded={open}
       aria-has-popup="true"
-      aria-label={open ? 'Close menu' : 'Open menu'}
-      title={open ? 'Close menu' : 'Open menu'}
+      aria-label={menuTitle}
+      title={menuTitle}
       id={id}
       onClick={onClick}
     >

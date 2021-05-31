@@ -1,12 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import Page from 'app/components/page';
-import Aside from 'app/components/aside';
-import Logo from 'app/components/logo';
+import Page, { Page__Header } from 'app/components/page';
 import Autocomplete from 'app/components/autocomplete';
-
-import { HEADER_ID } from 'app/constants/common';
 
 import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
@@ -14,6 +10,8 @@ export default class MainLayout extends React.PureComponent {
   state = {
     value: '',
     searchList: [],
+    isMobileMenuOpen: false,
+    isMobileSearchVisible: false,
   };
 
   componentDidUpdate() {
@@ -42,21 +40,36 @@ export default class MainLayout extends React.PureComponent {
     this.onSearch();
   };
 
+  onToggleMobileMenu = () => {
+    this.setState(prevState => ({
+      isMobileMenuOpen: !prevState.isMobileMenuOpen,
+      isMobileSearchVisible: false,
+    }))
+  };
+
+  onToggleMobileSearch = () => {
+    this.setState(prevState => ({
+      isMobileSearchVisible: !prevState.isMobileSearchVisible,
+      isMobileMenuOpen: false,
+    }));
+  };
+
   render() {
     const { children, toc, mods: { loading} } = this.props;
-    const { searchList, value } = this.state;
+    const { searchList, value, isMobileMenuOpen, isMobileSearchVisible } = this.state;
 
     return (
       <Page mods={{ loading }}>
-        <header className="page__header" id={HEADER_ID}>
-          <Logo mix="page__logo"/>
-        </header>
+        <Page__Header
+          onToggleMobileMenu={this.onToggleMobileMenu}
+          onToggleMobileSearch={this.onToggleMobileSearch}
+          isMobileMenuOpen={isMobileMenuOpen}
+        />
 
-        <Aside mix="page__aside">
-          {toc}
-        </Aside>
-
-        <form className="page__search" onSubmit={this.onSubmit}>
+        <form
+          className={b('page__search', {}, { visible: isMobileSearchVisible })}
+          onSubmit={this.onSubmit}
+        >
           <Autocomplete
             onChange={this.onChange}
             onSearch={this.onSearch}
@@ -64,6 +77,10 @@ export default class MainLayout extends React.PureComponent {
             list={searchList}
           />
         </form>
+
+        <aside className={b('page__aside', {}, { visible: isMobileMenuOpen })}>
+          {toc}
+        </aside>
 
         <main className="page__main">
           {
@@ -77,7 +94,10 @@ export default class MainLayout extends React.PureComponent {
           }
         </main>
 
-        <footer className="page__footer">Footer</footer>
+        <footer
+          className="page__footer"
+          hidden={isMobileMenuOpen}
+        >Footer</footer>
       </Page>
     );
   }

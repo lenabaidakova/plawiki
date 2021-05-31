@@ -2,8 +2,17 @@
 
 .#{$b}__aside {
   grid-area: sidebar;
+  position: fixed;
+  z-index: 1;
+  top: $headerHeight;
+  left: -100%;
+  overflow: auto;
   box-sizing: border-box;
-  padding: 0 $offsetHrz/2;
+  width: 100%;
+  height: calc(100vh - #{$headerHeight});
+  padding: 0 $offsetHrz / 2;
+  background: $greyLight;
+  transition: .5s left;
 
   @include respond-to($tablet) {
     position: sticky;
@@ -11,6 +20,7 @@
     width: 30vw;
     min-width: 296px;
     max-width: 344px;
+    height: 100vh;
   }
 
   @include respond-to($desktop) {

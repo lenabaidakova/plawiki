@@ -1,7 +1,7 @@
 import { HEADER_ID } from 'app/constants/common';
 
 export default () => {
-  const { location: { hash } } =window;
+  const { location: { hash } } = window;
 
   if (!hash) return;
 

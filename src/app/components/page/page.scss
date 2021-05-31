@@ -1,16 +1,15 @@
 .#{$b} {
   display: grid;
+  grid-template-areas: 'header'
+    'search'
+    'main'
+    'footer'
+    'sidebar';
   max-width: 1300px;
-  grid-template-columns: auto 1fr;
-  grid-template-areas:
-    "sidebar header search"
-    "main main main"
-    "footer footer footer";
 
   @include respond-to($tablet) {
-    grid-template-areas:
-      "header search"
-      "sidebar main"
-      "footer footer";
+    grid-template-areas: 'header search'
+      'sidebar main'
+      'footer footer';
   }
 }

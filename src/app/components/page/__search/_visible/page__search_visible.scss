@@ -1,0 +1,10 @@
+@import '../../page.vars';
+
+.#{$b}__search_visible {
+  top: $headerHeight;
+  transition: .2s top;
+
+  @include respond-to($tablet) {
+    top: 0;
+  }
+}

@@ -5,9 +5,9 @@
     background: transparent;
 
     &::before,
-    &:after {
-      transition: top .2s, transform .2s .2s;
+    &::after {
       top: 0;
+      transition: top .2s, transform .2s .2s;
     }
 
     &::before {

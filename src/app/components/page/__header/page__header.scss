@@ -2,12 +2,25 @@
 
 .#{$b}__header {
   display: flex;
-  align-items: center;
   grid-area: header;
+  align-items: center;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   box-sizing: border-box;
-  padding: $offsetVrt/2 $offsetHrz/2;
+  height: $headerHeight;
+  padding: $offsetVrt / 2 $offsetHrz / 2;
+  box-shadow: 0 4px 4px 0 $greyLight;
+  background: $greyLight;
 
   @include respond-to($tablet) {
+    position: static;
+    height: auto;
     padding: $offsetVrt $offsetHrz;
+
+    .#{$b}__hamburger,
+    .#{$b}__button-search {
+      display: none;
+    }
   }
 }
