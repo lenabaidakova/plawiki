@@ -1,4 +1,13 @@
 .#{$b} {
   display: inline-block;
   background: #f8f8fa;
+
+  &:visited {
+    color: $blackLight;
+  }
+
+  &:hover,
+  &:focus {
+    color: $blue;
+  }
 }
