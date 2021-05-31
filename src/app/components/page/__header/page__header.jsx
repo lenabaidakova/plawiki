@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import Logo from 'app/components/logo';
 import Hamburger from 'app/components/hamburger';
-import Button from 'app/components/button';
+import Search from 'app/components/search';
 
 import { HEADER_ID } from 'app/constants/common';
 
 const Page__Header = props => {
-  const { isMobileMenuOpen, onToggleMobileMenu, onToggleMobileSearch } = props;
+  const { isMobileMenuOpen, onToggleMobileMenu } = props;
   return (
     <header className="page__header" id={HEADER_ID}>
       <Hamburger
@@ -19,10 +19,7 @@ const Page__Header = props => {
 
       <Logo mix="page__logo"/>
 
-      <Button
-        mix="page__button-search"
-        onClick={onToggleMobileSearch}
-      >Search</Button>
+      <Search mix="page__search"/>
     </header>
   );
 };
@@ -30,7 +27,6 @@ const Page__Header = props => {
 Page__Header.propTypes = {
   isMobileMenuOpen: PropTypes.bool,
   onToggleMobileMenu: PropTypes.func,
-  onToggleMobileSearch: PropTypes.func,
 };
 
 export default Page__Header;

@@ -2,19 +2,16 @@
 
 .#{$b}__search {
   grid-area: search;
-  position: fixed;
-  top: -100%;
-  left: 0;
+  z-index: 1;
   box-sizing: border-box;
-  width: 100%;
-  padding: 0 $offsetHrz / 2 $offsetVrt / 2;
+  width: 40px;
   box-shadow: 0 4px 4px 0 $greyLight;
   background-color: $greyLight;
   transition: .5s top;
 
   @include respond-to($tablet) {
-    position: sticky;
-    top: 0;
-    padding: 0 $offsetHrz $offsetVrt;
+    flex: 1;
+    width: auto;
+    padding: 0 0 $offsetVrt / 2;
   }
 }

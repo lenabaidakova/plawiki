@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const sass = require('sass');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = {
   mode: 'none',
@@ -79,6 +80,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
+        exclude: /svg-icon__symbol/,
         use: [
           {
             loader: 'file-loader?name=images/[hash].[ext]',
@@ -93,6 +95,17 @@ module.exports = {
         use: [
           {
             loader: 'file-loader?name=fonts/[hash].[ext]',
+          },
+        ],
+      },
+      {
+        test: /svg-icon__symbol.+\.svg$/,
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              symbolId: 'svg-symbol-[name]-[hash]',
+            },
           },
         ],
       },
@@ -111,6 +124,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       b: 'bem-react-helper',
     }),
+    new SpriteLoaderPlugin(),
   ],
   devServer: {
     host: '0.0.0.0',

@@ -14,12 +14,10 @@
   background: $greyLight;
 
   @include respond-to($tablet) {
-    position: static;
     height: auto;
-    padding: $offsetVrt $offsetHrz;
+    padding: 0 $offsetVrt 0;
 
-    .#{$b}__hamburger,
-    .#{$b}__button-search {
+    .#{$b}__hamburger {
       display: none;
     }
   }
