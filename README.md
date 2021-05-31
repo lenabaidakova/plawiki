@@ -10,3 +10,4 @@ pngwing.com
 
 thanks
 https://foundation.wikimedia.org/wiki/File:Wikipedia%27s_W.svg
+https://github.com/SamHerbert/SVG-Loaders

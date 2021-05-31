@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Page, { Page__Header } from 'app/components/page';
 
+import SVGIcon from 'app/components/svg-icon';
+
 import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
 export default class MainLayout extends React.PureComponent {
@@ -37,7 +39,7 @@ export default class MainLayout extends React.PureComponent {
 
         <main className="page__main">
           {
-            loading && <span>loading</span>
+            loading && <SVGIcon mods={{ type: 'preloader' }} width="60px"/>
           }
 
           {
