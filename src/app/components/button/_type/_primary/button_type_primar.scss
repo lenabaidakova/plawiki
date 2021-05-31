@@ -1,0 +1,8 @@
+.#{$b}_type_primary {
+  color: $greyDark;
+
+  &:hover,
+  &:focus {
+    color:  $blue;
+  }
+}
