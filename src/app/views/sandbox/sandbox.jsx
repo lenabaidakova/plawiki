@@ -64,6 +64,20 @@ export default class Sandbox extends React.Component {
         </section>
 
         <section className="sandbox__section">
+          <h2>Font</h2>
+
+          <div className="sandbox__component">
+            <p style={{ fontWeight: '400' }}>PT Serif Regular</p>
+
+            <p style={{ fontWeight: '400', fontStyle: 'italic' }}>PT Serif Regular Italic</p>
+
+            <p style={{ fontWeight: '700' }}>PT Serif Bold</p>
+
+            <p style={{ fontWeight: '700', fontStyle: 'italic' }}>PT Serif Bold Italic</p>
+          </div>
+        </section>
+
+        <section className="sandbox__section">
           <h2>Accordion</h2>
 
           <div className="sandbox__component">
