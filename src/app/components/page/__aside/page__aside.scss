@@ -6,17 +6,19 @@
   z-index: 1;
   top: $headerHeight;
   left: -100%;
+  visibility: hidden;
   overflow: auto;
   box-sizing: border-box;
   width: 100%;
   height: calc(100vh - #{$headerHeight});
   padding: 0 $offsetHrz / 2;
   background: $greyLight;
-  transition: .5s left;
+  transition: left $asideTransitionDuration 0s, visibility 0s $asideTransitionDuration;
 
   @include respond-to($tablet) {
     position: sticky;
     top: 0;
+    visibility: visible;
     width: $asideWidth;
     min-width: 296px;
     max-width: $asideMaxWidth;

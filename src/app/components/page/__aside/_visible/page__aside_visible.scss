@@ -1,4 +1,7 @@
+@import '../../page.vars';
+
 .#{$b}__aside_visible {
   left: 0;
-  transition: .5s left;
+  visibility: visible;
+  transition: left $asideTransitionDuration 0s;
 }

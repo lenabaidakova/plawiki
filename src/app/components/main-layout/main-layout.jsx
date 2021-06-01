@@ -34,10 +34,12 @@ export default class MainLayout extends React.PureComponent {
         />
 
         <aside className={b('page__aside', {}, { visible: isMobileMenuOpen })}>
-          {toc}
+          <nav aria-label="Main menu">
+            {toc}
+          </nav>
         </aside>
 
-        <main className="page__main">
+        <main className="page__main" aria-hidden={isMobileMenuOpen}>
           {
             loading && <SVGIcon mods={{ type: 'preloader' }} width="60px"/>
           }
@@ -51,7 +53,7 @@ export default class MainLayout extends React.PureComponent {
 
         <footer
           className="page__footer"
-          hidden={isMobileMenuOpen}
+          aria-hidden={isMobileMenuOpen}
         >Footer</footer>
       </Page>
     );

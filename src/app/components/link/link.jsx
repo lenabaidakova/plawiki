@@ -23,6 +23,7 @@ export default class SmartLink extends React.Component {
     return (
       <Tag
         className={b('link', { mods, mix })}
+        {...this.props.target === '_blank' ? { rel: 'noopener noreferrer' } : {}}
         {...rest}
         onClick={this.onClick}
       >{children}</Tag>
