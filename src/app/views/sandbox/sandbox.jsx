@@ -32,6 +32,38 @@ export default class Sandbox extends React.Component {
     return (
       <div className="sandbox">
         <section className="sandbox__section">
+          <h2>Palette</h2>
+
+          <div className="sandbox__component">
+            <ul className="sandbox__palette">
+              <li className="sandbox__palette-item" style={{ background: '#f8f8fa' }}>
+                $greyLight, #f8f8fa
+              </li>
+
+              <li className="sandbox__palette-item" style={{ background: '#ccc' }}>
+                $grey, #ccc
+              </li>
+
+              <li className="sandbox__palette-item" style={{ background: '#656a70', color: '#ffffff' }}>
+                $greyDark, #656a70
+              </li>
+
+              <li className="sandbox__palette-item" style={{ background: '#3a3a3a', color: '#ffffff' }}>
+                $blackLight, #3a3a3a
+              </li>
+
+              <li className="sandbox__palette-item" style={{ background: '#0846ad', color: '#ffffff' }}>
+                $blue, #0846ad
+              </li>
+
+              <li className="sandbox__palette-item" style={{ background: '#073581', color: '#ffffff' }}>
+                $darkBlue, #073581
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="sandbox__section">
           <h2>Accordion</h2>
 
           <div className="sandbox__component">

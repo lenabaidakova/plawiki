@@ -11,19 +11,19 @@ by parameter 'wrapoutputclass' but with this parameter the request became much s
 
   a {
     text-decoration: underline !important;
-    color: #3a3a3a;
+    color: $blackLight;
 
     &:hover {
-      color: #0846ad;
+      color: $blue;
     }
 
     &:link,
     &[class] {
       text-decoration: underline !important;
-      color: #3a3a3a;
+      color: $blackLight;
 
       &:hover {
-        color: #0846ad;
+        color: $blue;
       }
     }
   }

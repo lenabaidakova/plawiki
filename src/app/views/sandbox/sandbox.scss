@@ -20,3 +20,13 @@
   padding: 32px;
   border: 1px solid #e8e8e8;
 }
+
+.#{$b}__palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  list-style: none;
+}
+
+.#{$b}__palette-item {
+  padding: 32px 16px;
+}
