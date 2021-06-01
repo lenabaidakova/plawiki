@@ -55,6 +55,6 @@ Accordion.defaultProps = {
 
 Accordion.propTypes = {
   children: PropTypes.node,
-  summary: PropTypes.string,
+  summary: PropTypes.string.isRequired,
   isExpanded: PropTypes.bool,
 };
