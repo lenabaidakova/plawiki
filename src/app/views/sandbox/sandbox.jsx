@@ -2,6 +2,7 @@ import React from 'react';
 
 import Accordion from 'app/components/accordion';
 import Autocomplete from 'app/components/autocomplete';
+import Button from 'app/components/button';
 import Link from 'app/components/link';
 
 const autocompleteDemoData = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
@@ -54,7 +55,7 @@ export default class Sandbox extends React.Component {
         </section>
 
         <section className="sandbox__section">
-          <h2>Autocomplete</h2>
+          <h2 style={{ color: 'red' }}>Autocomplete</h2>
 
           <div className="sandbox__component">
             <Autocomplete
@@ -64,6 +65,48 @@ export default class Sandbox extends React.Component {
               value={autocompleteInputValue}
               list={autocompleteList}
             />
+          </div>
+        </section>
+
+        <section className="sandbox__section">
+          <h2>Button</h2>
+
+          <p>Base button without modifiers</p>
+
+          <div className="sandbox__component">
+            <Button onClick={console.log}>Simple button</Button>
+
+            <br/>
+            <br/>
+
+            <Button mods={{ disabled: true }} onClick={console.log}>Disabled button</Button>
+          </div>
+
+          <p>We can add to component <code>href</code></p>
+
+          <div className="sandbox__component">
+            <Button to='nowhere'>Button</Button>
+
+            <br/>
+            <br/>
+
+            <Button mods={{ disabled: true }} to='nowhere'>Disabled button</Button>
+          </div>
+
+          <p>Button <code>type: primary, icon: magnifier</code></p>
+
+          <div className="sandbox__component">
+            <Button mods={{ type: 'primary', icon: 'magnifier' }} onClick={console.log}/>
+
+            <Button mods={{ type: 'primary', icon: 'magnifier', disabled: true }} onClick={console.log}/>
+          </div>
+
+          <p>Button component with <code>href, type: primary, icon: magnifier</code></p>
+
+          <div className="sandbox__component">
+            <Button mods={{ type: 'primary', icon: 'magnifier' }} to='nowhere'/>
+
+            <Button mods={{ type: 'primary', icon: 'magnifier', disabled: true }} to='/'/>
           </div>
         </section>
       </div>

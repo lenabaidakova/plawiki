@@ -3,6 +3,10 @@
 
   &:hover,
   &:focus {
-    color:  $blue;
+    color: $blue;
+  }
+
+  &.#{$b}_disabled {
+    color: $grey;
   }
 }

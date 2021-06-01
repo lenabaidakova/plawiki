@@ -6,8 +6,10 @@
   text-decoration: none;
   vertical-align: middle;
   font-family: inherit;
+  font-size: inherit;
   border: none;
   background: none;
+  color: inherit;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -20,5 +22,10 @@
   &:hover,
   &:focus {
     text-decoration: none;
+  }
+
+  &.#{$b}_disabled {
+    pointer-events: none;
+    cursor: default;
   }
 }
