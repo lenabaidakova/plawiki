@@ -7,7 +7,7 @@ import Contents from 'app/components/contents';
 export default class Article extends React.Component {
   state = {
     sections: [],
-    isLoading: true,
+    isLoading: false,
     html: '',
   };
 
@@ -22,6 +22,8 @@ export default class Article extends React.Component {
   }
 
   getPage = (pageid) => {
+    this.setState({ isLoading: true });
+
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=parse&format=json&redirects&prop=text|modules|jsconfigvars|sections&disableeditsection&page=${pageid}&useskin=modern&disabletoc&mobileformat`)
       .then(response => response.json())
       .then(data => {
