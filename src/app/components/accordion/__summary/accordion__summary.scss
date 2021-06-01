@@ -10,6 +10,10 @@
   border-bottom: 1px solid $grey;
   color: $greyDark;
 
+  &:hover {
+    border-color: $blue;
+  }
+
   &::after {
     content: '';
     transform: rotate(45deg);
