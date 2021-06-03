@@ -5,7 +5,7 @@ import Autocomplete from 'app/components/autocomplete';
 export default class Search extends React.Component {
   state = {
     value: '',
-    searchList: [],
+    options: [],
   };
 
   onChange = value => this.setState({ value }, this.onSearch);
@@ -14,7 +14,7 @@ export default class Search extends React.Component {
     const { value } = this.state;
 
     if (!value) {
-      this.setState({ searchList: []});
+      this.setState({ options: []});
 
       return;
     }
@@ -22,7 +22,7 @@ export default class Search extends React.Component {
     // https://www.mediawiki.org/w/api.php?action=opensearch&origin=*&search=Nelson
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=prefixsearch&pssearch=${value}`)
       .then(response => response.json())
-      .then(data => this.setState({ searchList: data.query.prefixsearch}))
+      .then(data => this.setState({ options: data.query.prefixsearch}))
   };
 
   onSubmit = (e) => {
@@ -31,7 +31,7 @@ export default class Search extends React.Component {
   };
 
   render() {
-    const { value, searchList } = this.state;
+    const { value, options } = this.state;
 
     return (
       <form
@@ -42,7 +42,7 @@ export default class Search extends React.Component {
           onChange={this.onChange}
           onSearch={this.onSearch}
           value={value}
-          list={searchList}
+          options={options}
         />
       </form>
     );

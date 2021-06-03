@@ -1,6 +1,8 @@
 export const KEY = {
   TAB: 9,
   ESC: 27,
+  ENTER: 13,
+  SPACE: 32,
   UP: 38,
   DOWN: 40,
   LEFT: 37,

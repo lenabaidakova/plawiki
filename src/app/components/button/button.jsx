@@ -5,16 +5,16 @@ import SVGIcon from 'app/components/svg-icon';
 import Link from 'app/components/link';
 
 const Button = props => {
-  const { children, mods, mix, ...rest } = props;
+  const { children, mods, mix, type, ...rest } = props;
   const isLink = !!props.to || !!props.href;
   const Tag = isLink ? Link : 'button';
 
   return (
     <Tag
       className={b('button', { mods, mix })}
-      disabled={mods.disabled}
       {...((isLink && mods.disabled) ? { tabIndex: '-1'} : {})}
       {...((!isLink && mods.disabled) ? { disabled: true } : {})}
+      {...(!isLink ? { type } : {})}
       {...rest}
     >
       {children}
@@ -33,6 +33,7 @@ const Button = props => {
 
 Button.defaultProps = {
   mods: {},
+  type: 'button',
 };
 
 Button.propTypes = {

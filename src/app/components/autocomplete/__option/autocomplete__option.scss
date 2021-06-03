@@ -1,0 +1,7 @@
+.#{$b}__option {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $blueLight;
+  }
+}
