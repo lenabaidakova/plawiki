@@ -16,7 +16,7 @@ export default class Accordion extends React.Component {
 
   ariaControlsId = uniqueId('accordion-aria');
 
-  onToggle = () => this.setState(prevState => ({ isExpanded: !prevState.isExpanded }));
+  handleToggle = () => this.setState(prevState => ({ isExpanded: !prevState.isExpanded }));
 
   render() {
     const { summary, children } = this.props;
@@ -30,7 +30,7 @@ export default class Accordion extends React.Component {
             aria-expanded={isExpanded}
             aria-controls={this.ariaControlsId}
             id={this.defaultId}
-            onClick={this.onToggle}
+            onClick={this.handleToggle}
           >
             {summary}
           </Button>

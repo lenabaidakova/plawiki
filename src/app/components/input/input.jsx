@@ -8,11 +8,11 @@ export default class Input extends React.Component {
     isFocused: false,
   };
 
-  onChange = e => this.props.onChange?.(e.target.value);
+  handleChange = e => this.props.onChange?.(e.target.value);
 
-  onFocus = () => this.setState({ isFocused: true });
+  handleFocus = () => this.setState({ isFocused: true });
 
-  onBlur = () => this.setState({ isFocused: false });
+  handleBlur = () => this.setState({ isFocused: false });
 
   render() {
     const { mods, onButtonClick, ...rest } = this.props;
@@ -24,15 +24,16 @@ export default class Input extends React.Component {
         <input
           className="input__field"
           {...rest}
-          onChange={this.onChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
+          onChange={this.handleChange}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          disabled={mods.disabled}
         />
 
         {
           mods.type === 'search' && (
             <Button
-              mods={{ icon: 'magnifier', type: 'primary' }}
+              mods={{ icon: 'magnifier', type: 'primary', disabled: mods.disabled }}
               mix="input__button"
               onClick={onButtonClick}
               aria-label={searchButtonLabel}
@@ -54,6 +55,5 @@ Input.propTypes = {
   onButtonClick: PropTypes.func,
   mods: PropTypes.shape({
     type: PropTypes.oneOf(['search']),
-    disabled: PropTypes.bool,
   }),
 };
