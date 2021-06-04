@@ -7,6 +7,7 @@ import Link from 'app/components/link';
 import SVGIcon from 'app/components/svg-icon';
 import Hamburger from 'app/components/hamburger';
 import Input from 'app/components/input';
+import List, { List__Item } from 'app/components/list';
 
 const autocompleteDemoData = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
 
@@ -139,7 +140,7 @@ export default class Sandbox extends React.Component {
             <Accordion summary="Wombats aren’t as small as you might think!">
               An adult wombat usually grows to about a metre long – the same as a medium-sized dog. They can
               weigh up to 40 kilograms, and have wide, strong feet which are great for digging! <Link
-              href=" https://www.natgeokids.com/ie/discover/animals/general-animals/facts-about-wombats/">More info</Link>
+              href="https://www.natgeokids.com/ie/discover/animals/general-animals/facts-about-wombats/">More info</Link>
             </Accordion>
           </div>
 
@@ -151,7 +152,7 @@ export default class Sandbox extends React.Component {
             <Accordion summary="Wombats aren’t as small as you might think!" isExpanded={false}>
               An adult wombat usually grows to about a metre long – the same as a medium-sized dog. They can
               weigh up to 40 kilograms, and have wide, strong feet which are great for digging! <Link
-              href=" https://www.natgeokids.com/ie/discover/animals/general-animals/facts-about-wombats/">More info</Link>
+              href="https://www.natgeokids.com/ie/discover/animals/general-animals/facts-about-wombats/">More info</Link>
             </Accordion>
           </div>
         </section>
@@ -235,10 +236,41 @@ export default class Sandbox extends React.Component {
         </section>
 
         <section className="sandbox__section">
-          <h2 style={{ color: 'red' }}>Contents</h2>
+          <h2>List</h2>
         </section>
 
+        <List mods={{ type: 'primary' }}>
+          <List__Item>
+            <Link mods={{ type: 'primary' }} href="https://www.natgeokids.com/ie/discover/animals/general-animals/10-hopping-fun-rabbit-facts/">
+              A baby rabbit is called a kit, a female is called a doe and a male is called a buck.
+            </Link>
 
+            <List mods={{ type: 'primary' }}>
+              <List__Item>
+                Like cats, happy rabbits purr when they’re content and relaxed
+              </List__Item>
+
+              <List__Item>
+                Rabbits are amazing athletes — they can jump as high as 90 centimetres in one leap!
+              </List__Item>
+            </List>
+          </List__Item>
+
+          <List__Item>
+            <Link mods={{ type: 'primary' }} href="https://www.natgeokids.com/ie/discover/animals/general-animals/zebra-facts/">Zebras are
+              constantly on the move for fresh grass to eat and water to drink. Super stealthy
+              creatures, they’ll travel thousands of kilometres in search of green pastures where they can
+              fill their bellies and quench their thirst!</Link>
+          </List__Item>
+
+          <List__Item>
+            <Link mods={{ type: 'primary' }} href="https://www.natgeokids.com/ie/discover/animals/general-animals/cheetah-facts/">
+              The fastest land animal in the world, a cheetah can reach 112km/h in just three seconds – that’s faster
+              than a sports car accelerates! Its body has evolved for speed, with long legs, an elongated spine, adapted
+              claws to grip the ground and a long tail for balance.
+            </Link>
+          </List__Item>
+        </List>
       </div>
     );
   }

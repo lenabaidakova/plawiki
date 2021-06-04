@@ -11,6 +11,9 @@ const List = props => {
 
 List.propTypes = {
   children: PropTypes.node,
+  mods: PropTypes.shape({
+    type: PropTypes.oneOf(['primary']),
+  }),
 };
 
 export default List;
