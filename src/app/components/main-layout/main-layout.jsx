@@ -16,7 +16,7 @@ export default class MainLayout extends React.PureComponent {
     scrollToAnchor();
   }
 
-  onToggleMobileMenu = () => {
+  handleToggleMobileMenu = () => {
     this.setState(prevState => ({
       isMobileMenuOpen: !prevState.isMobileMenuOpen,
     }))
@@ -29,27 +29,31 @@ export default class MainLayout extends React.PureComponent {
     return (
       <Page mods={{ loading }}>
         <Page__Header
-          onToggleMobileMenu={this.onToggleMobileMenu}
+          onToggleMobileMenu={this.handleToggleMobileMenu}
           isMobileMenuOpen={isMobileMenuOpen}
         />
 
         <aside className={b('page__aside', {}, { visible: isMobileMenuOpen })}>
-          <nav aria-label="Main menu">
-            {toc}
-          </nav>
+          {
+            !loading && (
+              <nav aria-label="Main menu">
+                {toc}
+              </nav>
+            )
+          }
         </aside>
 
         <main className="page__main" aria-hidden={isMobileMenuOpen}>
           {
-            loading && <SVGIcon mods={{ type: 'preloader' }} width="60px"/>
-          }
-
-          {
             !loading && (
-              <Fragment>{children}</Fragment>
+              <main className="page__main" aria-hidden={isMobileMenuOpen}>{children}</main>
             )
           }
         </main>
+
+        {
+          loading && <SVGIcon mods={{ type: 'preloader' }} mix="page__preloader" width="60px" height="60px"/>
+        }
 
         <footer
           className="page__footer"

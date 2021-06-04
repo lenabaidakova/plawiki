@@ -12,3 +12,5 @@ require('./__main/page__main.scss');
 
 require('./__search/page__search.scss');
 require('./__search/_visible/page__search_visible.scss');
+
+require('./_loading/page_loading.scss');
