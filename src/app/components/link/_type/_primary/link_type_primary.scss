@@ -1,5 +1,11 @@
 .#{$b}_type_primary {
   color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 
   &:visited {
     color: inherit;

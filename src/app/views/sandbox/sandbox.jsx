@@ -214,6 +214,18 @@ export default class Sandbox extends React.Component {
         </section>
 
         <section className="sandbox__section">
+          <h2>Link</h2>
+
+          <div className="sandbox__component">
+            <Link mods={{ type: 'primary' }} to="nowhere">Primary link</Link>
+          </div>
+
+          <div className="sandbox__component">
+            <Link to="nowhere">Base link</Link>
+          </div>
+        </section>
+
+        <section className="sandbox__section">
           <h2>SVGIcon</h2>
 
           <p><code>type: 'logo'</code></p>
