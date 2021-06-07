@@ -4,6 +4,8 @@ import MainLayout from 'app/components/main-layout';
 import WikiArticle from 'app/components/wiki-article';
 import Contents from 'app/components/contents';
 
+import queryBuilder from 'app/utils/query-builder';
+
 export default class Article extends React.Component {
   state = {
     sections: [],
@@ -21,15 +23,30 @@ export default class Article extends React.Component {
     }
   }
 
-  getPage = (pageid) => {
+  getPage = pageid => {
     this.setState({ isLoading: true });
 
-    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=parse&format=json&redirects&prop=text|modules|jsconfigvars|sections&disableeditsection&page=${pageid}&useskin=modern&disabletoc&mobileformat`)
+    // https://www.mediawiki.org/wiki/API:Parsing_wikitext
+
+    const params = {
+      action: 'parse',
+      origin: '*',
+      format: 'json',
+      redirects: true,
+      prop: 'text|modules|jsconfigvars|sections',
+      disableeditsection: true,
+      page: pageid,
+      useskin: 'modern',
+      disabletoc: true,
+      mobileformat: true,
+      mainpage: true,
+    };
+
+    fetch(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`)
       .then(response => response.json())
       .then(data => {
         this.renderContent(data.parse.sections);
 
-        // https://www.mediawiki.org/wiki/API:Parsing_wikitext
         mw.config.set(data.parse.jsconfigvars);
 
         // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.loader-method-using
