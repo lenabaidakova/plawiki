@@ -3,9 +3,7 @@
 .#{$b}__logo {
   display: block;
   flex: 1;
-  width: $logoWidth;
-  max-width: $logoMaxWidth;
-  height: $logoHeight;
+  height: 40px;
   text-align: center;
 
   @include respond-to($tablet) {

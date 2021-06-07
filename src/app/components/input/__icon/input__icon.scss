@@ -1,0 +1,14 @@
+@import '../input.vars';
+
+.#{$b}__icon {
+  position: absolute;
+  top: 0;
+  left: $offset / 2;
+  width: $iconWidth;
+  height: 100%;
+  color: $greyDark;
+
+  + .#{$b}__field {
+    padding-left: $iconWidth + $offset;
+  }
+}

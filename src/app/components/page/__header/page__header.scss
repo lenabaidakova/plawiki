@@ -5,7 +5,7 @@
   grid-area: header;
   align-items: center;
   position: sticky;
-  z-index: 1;
+  z-index: $searchZIndex + 1;
   top: 0;
   box-sizing: border-box;
   height: $headerHeight;
@@ -14,6 +14,7 @@
   background: $greyLight;
 
   @include respond-to($tablet) {
+    position: static;
     height: auto;
     padding: 0 $offsetVrt 0;
 

@@ -7,6 +7,7 @@ by parameter 'wrapoutputclass' but with this parameter the request became much s
 /* unfortunately, Wikipedia uses important in styles */
 /* stylelint-disable declaration-no-important */
 .#{$b} .mw-parser-output {
+  overflow: scroll;
   text-align: justify;
 
   a {
@@ -72,5 +73,21 @@ by parameter 'wrapoutputclass' but with this parameter the request became much s
     @include respond-to($tablet) {
       font-size: inherit;
     }
+  }
+
+  .metadata {
+    clear: both;
+  }
+
+  .thumbinner {
+    width: 100% !important;
+
+    img {
+      height: auto;
+    }
+  }
+
+  img {
+    max-width: 100%;
   }
 }

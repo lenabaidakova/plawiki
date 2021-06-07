@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import Page, { Page__Header } from 'app/components/page';
 
 import SVGIcon from 'app/components/svg-icon';
+import Search from 'app/components/search';
 
 import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
 export default class MainLayout extends React.PureComponent {
   state = {
     isMobileMenuOpen: false,
+    isMobileSearchVisible: false,
   };
 
   componentDidUpdate() {
@@ -22,16 +24,26 @@ export default class MainLayout extends React.PureComponent {
     }))
   };
 
+  handleToggleSearch = () => {
+    this.setState(prevState => ({
+      isMobileSearchVisible: !prevState.isMobileSearchVisible,
+      isMobileMenuOpen: false,
+    }))
+  };
+
   render() {
     const { children, toc, mods: { loading} } = this.props;
-    const { isMobileMenuOpen } = this.state;
+    const { isMobileMenuOpen, isMobileSearchVisible } = this.state;
 
     return (
       <Page mods={{ loading }}>
         <Page__Header
           onToggleMobileMenu={this.handleToggleMobileMenu}
           isMobileMenuOpen={isMobileMenuOpen}
+          onToggleSearch={this.handleToggleSearch}
         />
+
+        <Search mix={b('page__search', {}, { visible: isMobileSearchVisible })}/>
 
         <aside className={b('page__aside', {}, { visible: isMobileMenuOpen })}>
           {
@@ -46,7 +58,7 @@ export default class MainLayout extends React.PureComponent {
         <main className="page__main" aria-hidden={isMobileMenuOpen}>
           {
             !loading && (
-              <main className="page__main" aria-hidden={isMobileMenuOpen}>{children}</main>
+              <Fragment>{children}</Fragment>
             )
           }
         </main>

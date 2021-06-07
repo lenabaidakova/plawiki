@@ -143,7 +143,7 @@ export default class Autocomplete extends React.Component {
         ref={this.autocompleteRef}
       >
         <Input
-          mods={{ type: 'search' }}
+          mods={{ icon: 'magnifier' }}
           type="search"
           value={value}
           onChange={this.handleChange}
@@ -155,6 +155,7 @@ export default class Autocomplete extends React.Component {
           aria-owns={this.listId}
           aria-autocomplete="list"
           aria-activedescendant={this.optionsRefs?.[selectedOptionIndex]?.id}
+          title="Start typing to search"
       />
 
         <ul

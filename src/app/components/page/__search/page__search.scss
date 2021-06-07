@@ -1,17 +1,23 @@
 @import '../page.vars';
 
 .#{$b}__search {
+  display: none;
   grid-area: search;
-  z-index: 1;
+  position: sticky;
+  z-index: $searchZIndex;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
-  width: 40px;
+  width: 100%;
   box-shadow: 0 4px 4px 0 $greyLight;
   background-color: $greyLight;
   transition: .5s top;
 
   @include respond-to($tablet) {
     flex: 1;
+    position: sticky;
+    top: 0;
     width: auto;
-    padding: 0 0 $offsetVrt / 2;
+    padding: 0 $offsetHrz $offsetVrt / 2;
   }
 }

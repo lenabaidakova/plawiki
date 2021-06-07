@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from 'app/components/button';
+import SVGIcon from 'app/components/svg-icon';
 
 export default class Input extends React.Component {
   state = {
@@ -17,10 +17,18 @@ export default class Input extends React.Component {
   render() {
     const { mods, onButtonClick, ...rest } = this.props;
     const { isFocused } = this.state;
-    const searchButtonLabel = 'Click to start search';
 
     return (
       <div className={b('input', this.props, { focused: isFocused })}>
+        {
+          mods.icon && (
+            <SVGIcon
+              mods={{ type: 'magnifier' }}
+              mix="input__icon"
+            />
+          )
+        }
+
         <input
           className="input__field"
           {...rest}
@@ -29,18 +37,6 @@ export default class Input extends React.Component {
           onBlur={this.handleBlur}
           disabled={mods.disabled}
         />
-
-        {
-          mods.type === 'search' && (
-            <Button
-              mods={{ icon: 'magnifier', type: 'primary', disabled: mods.disabled }}
-              mix="input__button"
-              onClick={onButtonClick}
-              aria-label={searchButtonLabel}
-              title={searchButtonLabel}
-            />
-          )
-        }
       </div>
     );
   }

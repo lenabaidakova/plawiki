@@ -22,7 +22,11 @@ export default class Search extends React.Component {
     // https://www.mediawiki.org/w/api.php?action=opensearch&origin=*&search=Nelson
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=prefixsearch&pssearch=${value}`)
       .then(response => response.json())
-      .then(data => this.setState({ options: data.query.prefixsearch}))
+      .then(data => {
+        const options = data.query.prefixsearch.map(({ title }) => ({ title, link: `/wiki/${title}` }));
+
+        this.setState({ options });
+      })
   };
 
   onSubmit = (e) => {
