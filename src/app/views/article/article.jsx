@@ -5,12 +5,14 @@ import WikiArticle from 'app/components/wiki-article';
 import Contents from 'app/components/contents';
 
 import queryBuilder from 'app/utils/query-builder';
+import fetchWrapper from 'app/utils/fetch-wrapper';
 
 export default class Article extends React.Component {
   state = {
     sections: [],
     isLoading: false,
     html: '',
+    error: {},
   };
 
   componentDidMount() {
@@ -23,10 +25,10 @@ export default class Article extends React.Component {
     }
   }
 
-  getPage = pageid => {
-    this.setState({ isLoading: true });
+  getPage = async (title) => {
+    this.setState({isLoading: true});
 
-    // https://www.mediawiki.org/wiki/API:Parsing_wikitext
+    // API doc https://www.mediawiki.org/wiki/API:Parsing_wikitext
 
     const params = {
       action: 'parse',
@@ -35,27 +37,68 @@ export default class Article extends React.Component {
       redirects: true,
       prop: 'text|modules|jsconfigvars|sections',
       disableeditsection: true,
-      page: pageid,
+      page: title,
       useskin: 'modern',
       disabletoc: true,
       mobileformat: true,
       mainpage: true,
+      formatversion: '2',
     };
 
-    fetch(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`)
-      .then(response => response.json())
-      .then(data => {
-        this.renderContent(data.parse.sections);
+    try {
+      const data = await fetchWrapper(`http://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
 
-        mw.config.set(data.parse.jsconfigvars);
+      mw.config.set(data.parse.jsconfigvars);
 
-        // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.loader-method-using
-        window.mw.loader.using([...data.parse.modules, ...data.parse.modulestyles])
-          .always(() => this.setState({ html: data.parse.text['*'], isLoading: false }));
-      })
+      // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.loader-method-using
+      mw.requestIdleCallback(
+        () =>  window.mw.loader.using([...data.parse.modules, ...data.parse.modulestyles]),
+        { timeout: 1 }
+      );
+
+      this.renderContent(data.parse.sections);
+      this.setState({ html: data.parse.text, isLoading: false });
+
+    } catch(e) {
+
+      console.error(e);
+
+      // errors https://www.mediawiki.org/wiki/API:Errors_and_warnings
+
+      const error = {
+        status: e.status,
+        info: e.error?.info || e.info || 'Something was wrong. Try later'
+      };
+
+      this.setState({ error, isLoading: false });
+    }
   };
 
-  renderContent = (sections) => {
+  /*
+    param sections example: [
+      {
+        toclevel: 1,
+        level: "2",
+        line: "Name",
+        number: "1",
+        index: "1",
+        fromtitle: "Cat",
+        byteoffset: 9442,
+        anchor: "Name"
+      },
+      {
+        toclevel: 2,
+        level: "3",
+        line: "History",
+        number: "2",
+        index: "2",
+        fromtitle: "Cat",
+        byteoffset: 15901,
+        anchor: "History"
+      },
+    ]
+  */
+  renderContent = sections => {
     const newSections = [];
     let parentNodesStack = [];
 
@@ -90,12 +133,13 @@ export default class Article extends React.Component {
   };
 
   render() {
-    const { sections, isLoading, html } = this.state;
+    const { sections, isLoading, html, error } = this.state;
 
     return (
       <MainLayout
         mods={{ loading: isLoading }}
         toc={<Contents headline="Contents" list={sections}/>}
+        error={error}
       >
         <WikiArticle>
           <div dangerouslySetInnerHTML={{__html: html}}/>
