@@ -1,9 +1,9 @@
 @import '../../page.vars';
 
 .#{$b}__search_visible {
-  display: block;
   top: $headerHeight;
-  transition: .2s top;
+  visibility: visible;
+  transition: top $searchTransitionDuration 0s;
 
   @include respond-to($tablet) {
     top: 0;

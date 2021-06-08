@@ -22,6 +22,7 @@ export default class MainLayout extends React.PureComponent {
   handleToggleMobileMenu = () => {
     this.setState(prevState => ({
       isMobileMenuOpen: !prevState.isMobileMenuOpen,
+      isMobileSearchVisible: false,
     }))
   };
 
@@ -44,6 +45,7 @@ export default class MainLayout extends React.PureComponent {
           onToggleSearch={this.handleToggleSearch}
         />
 
+        {/* todo: add autofocus when open search on mobile */}
         <Search mix={b('page__search', {}, { visible: isMobileSearchVisible })}/>
 
         <aside className={b('page__aside', {}, { visible: isMobileMenuOpen })}>

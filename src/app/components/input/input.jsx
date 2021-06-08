@@ -18,6 +18,8 @@ export default class Input extends React.Component {
     const { mods, onButtonClick, ...rest } = this.props;
     const { isFocused } = this.state;
 
+    // todo: add clear button
+
     return (
       <div className={b('input', this.props, { focused: isFocused })}>
         {

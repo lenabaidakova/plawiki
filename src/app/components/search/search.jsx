@@ -55,7 +55,6 @@ export default class Search extends React.Component {
       >
         <Autocomplete
           onChange={this.onChange}
-          onSearch={this.onSearch}
           value={value}
           options={options}
         />

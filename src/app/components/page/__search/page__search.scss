@@ -1,17 +1,17 @@
 @import '../page.vars';
 
 .#{$b}__search {
-  display: none;
   grid-area: search;
-  position: sticky;
+  position: fixed;
   z-index: $searchZIndex;
   top: 0;
   left: 0;
+  visibility: hidden;
   box-sizing: border-box;
   width: 100%;
   box-shadow: 0 4px 4px 0 $greyLight;
   background-color: $greyLight;
-  transition: .5s top;
+  transition: top $searchTransitionDuration 0s, visibility 0s $searchTransitionDuration;
 
   @include respond-to($tablet) {
     display: block;

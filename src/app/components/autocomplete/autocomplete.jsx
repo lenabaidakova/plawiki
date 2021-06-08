@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import Input from 'app/components/input';
 import Link from "app/components/link";
@@ -11,7 +12,7 @@ import uniqueId from 'app/utils/unique-id';
 // aria combobox https://www.w3.org/TR/wai-aria-practices-1.1/#combobox
 // https://a11y-guidelines.orange.com/en/articles/autocomplete-component/#resources
 
-export default class Autocomplete extends React.Component {
+class Autocomplete extends React.Component {
   state = {
     isOpen: false,
     selectedOptionIndex: 0,
@@ -73,9 +74,17 @@ export default class Autocomplete extends React.Component {
     if (selectedOptionIndex === -1) return;
 
     const { options, onChange } = this.props;
+    const { title, link } = options[selectedOptionIndex];
 
     e.preventDefault();
-    onChange?.(options[selectedOptionIndex].title);
+
+    if (link) {
+      onChange?.('');
+      // todo: close search on mobile after redirect
+      this.props.history.push(link);
+    } else {
+      onChange?.(title);
+    }
     this.setState({ isOpen: false, selectedOptionIndex: 0 });
   }
 
@@ -133,7 +142,7 @@ export default class Autocomplete extends React.Component {
   };
 
   render() {
-    const { value, placeholder, options, onSearch } = this.props;
+    const { value, placeholder, options } = this.props;
     const { isOpen, selectedOptionIndex } = this.state;
 
     return (
@@ -148,7 +157,6 @@ export default class Autocomplete extends React.Component {
           value={value}
           onChange={this.handleChange}
           placeholder={placeholder}
-          onButtonClick={onSearch}
           autoComplete="new-item"
           role="combobox"
           aria-expanded={isOpen}
@@ -203,9 +211,10 @@ Autocomplete.defaultProps = {
 Autocomplete.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
-  onSearch: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     link: PropTypes.string,
   })),
 };
+
+export default withRouter(Autocomplete);
