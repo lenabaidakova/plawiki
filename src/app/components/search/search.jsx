@@ -2,6 +2,9 @@ import React from 'react';
 
 import Autocomplete from 'app/components/autocomplete';
 
+import queryBuilder from 'app/utils/query-builder';
+import fetchWrapper from 'app/utils/fetch-wrapper';
+
 export default class Search extends React.Component {
   state = {
     value: '',
@@ -10,7 +13,7 @@ export default class Search extends React.Component {
 
   onChange = value => this.setState({ value }, this.onSearch);
 
-  onSearch = () => {
+  onSearch = async () => {
     const { value } = this.state;
 
     if (!value) {
@@ -19,14 +22,22 @@ export default class Search extends React.Component {
       return;
     }
 
-    // https://www.mediawiki.org/w/api.php?action=opensearch&origin=*&search=Nelson
-    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=prefixsearch&pssearch=${value}`)
-      .then(response => response.json())
-      .then(data => {
-        const options = data.query.prefixsearch.map(({ title }) => ({ title, link: `/wiki/${title}` }));
+    const params = {
+      origin: '*',
+      action: 'query',
+      format: 'json',
+      list: 'prefixsearch',
+      pssearch: value,
+    };
 
-        this.setState({ options });
-      })
+    try {
+      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
+      const options = data.query.prefixsearch.map(({ title }) => ({ title, link: `/wiki/${title}` }));
+
+      this.setState({ options });
+    } catch (e) {
+      console.error(e); // todo: show error in ui
+    }
   };
 
   onSubmit = (e) => {
