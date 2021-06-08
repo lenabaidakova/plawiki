@@ -6,7 +6,6 @@ require('./page.scss');
 require('./__aside/page__aside.scss');
 require('./__aside/_visible/page__aside_visible.scss');
 
-require('./__footer/page__footer.scss');
 require('./__logo/page__logo.scss');
 require('./__main/page__main.scss');
 

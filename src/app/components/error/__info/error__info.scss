@@ -1,0 +1,10 @@
+.#{$b}__info {
+  margin: 0;
+  padding: 24px;
+  font-size: 18px;
+  line-height: 1.4;
+
+  @include respond-to($tablet) {
+    font-size: 22px;
+  }
+}

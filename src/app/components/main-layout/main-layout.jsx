@@ -5,6 +5,7 @@ import Page, { Page__Header } from 'app/components/page';
 
 import SVGIcon from 'app/components/svg-icon';
 import Search from 'app/components/search';
+import Error from 'app/components/error';
 
 import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
@@ -32,11 +33,11 @@ export default class MainLayout extends React.PureComponent {
   };
 
   render() {
-    const { children, toc, mods: { loading} } = this.props;
+    const { children, toc, mods: { loading }, error } = this.props;
     const { isMobileMenuOpen, isMobileSearchVisible } = this.state;
 
     return (
-      <Page mods={{ loading }}>
+      <Page mods={{ loading, error: !!error }}>
         <Page__Header
           onToggleMobileMenu={this.handleToggleMobileMenu}
           isMobileMenuOpen={isMobileMenuOpen}
@@ -57,7 +58,11 @@ export default class MainLayout extends React.PureComponent {
 
         <main className="page__main" aria-hidden={isMobileMenuOpen}>
           {
-            !loading && (
+            !!error.info && <Error mix="page__error" info={error.info} status={error.status}/>
+          }
+
+          {
+            !loading && !error.info && (
               <Fragment>{children}</Fragment>
             )
           }
@@ -66,11 +71,6 @@ export default class MainLayout extends React.PureComponent {
         {
           loading && <SVGIcon mods={{ type: 'preloader' }} mix="page__preloader" width="60px" height="60px"/>
         }
-
-        <footer
-          className="page__footer"
-          aria-hidden={isMobileMenuOpen}
-        >Footer</footer>
       </Page>
     );
   }
@@ -78,4 +78,12 @@ export default class MainLayout extends React.PureComponent {
 
 MainLayout.propTypes = {
   children: PropTypes.node,
+  toc: PropTypes.node,
+  error: PropTypes.shape({
+    status: PropTypes.number,
+    info: PropTypes.string,
+  }),
+  mods: PropTypes.shape({
+    loading: PropTypes.bool,
+  }),
 };
