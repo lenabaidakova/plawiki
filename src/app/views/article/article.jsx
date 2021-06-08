@@ -6,6 +6,7 @@ import Contents from 'app/components/contents';
 
 import queryBuilder from 'app/utils/query-builder';
 import fetchWrapper from 'app/utils/fetch-wrapper';
+import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
 export default class Article extends React.Component {
   state = {
@@ -58,6 +59,7 @@ export default class Article extends React.Component {
 
       this.renderContent(data.parse.sections);
       this.setState({ html: data.parse.text, isLoading: false });
+      scrollToAnchor();
 
     } catch(e) {
 
@@ -138,7 +140,10 @@ export default class Article extends React.Component {
     return (
       <MainLayout
         mods={{ loading: isLoading }}
-        toc={<Contents headline="Contents" list={sections}/>}
+        toc={{
+          headline: 'Contents',
+          sections,
+        }}
         error={error}
       >
         <WikiArticle>

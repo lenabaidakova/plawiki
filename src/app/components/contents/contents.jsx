@@ -7,7 +7,7 @@ import List from 'app/components/list';
 import Contents__List from './__list';
 
 const Contents = props => {
-  const { list, headline } = props;
+  const { list, headline, onClick } = props;
 
   return (
     <section className={b('contents', props)}>
@@ -15,7 +15,7 @@ const Contents = props => {
         <List mods={{ type: 'primary'}}>
           {
             list.map((item, index) => (
-              <Contents__List item={item} key={index}/>
+              <Contents__List item={item} key={index} onClick={onClick}/>
             ))
           }
         </List>
@@ -37,6 +37,7 @@ Contents.propTypes = {
     children: PropTypes.array,
   })),
   headline: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Contents;

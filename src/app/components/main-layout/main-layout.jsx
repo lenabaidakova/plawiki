@@ -1,22 +1,29 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import Page, { Page__Header } from 'app/components/page';
 
 import SVGIcon from 'app/components/svg-icon';
 import Search from 'app/components/search';
 import Error from 'app/components/error';
+import Contents from 'app/components/contents';
 
 import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
-export default class MainLayout extends React.PureComponent {
+class MainLayout extends React.PureComponent {
   state = {
     isMobileMenuOpen: false,
     isMobileSearchVisible: false,
   };
 
-  componentDidUpdate() {
-    scrollToAnchor();
+  componentDidUpdate(prevProps) {
+    const { location: currentLocation } = this.props;
+    const { location: prevLocation } = prevProps;
+
+    if (currentLocation.hash !== prevLocation.hash) {
+      scrollToAnchor();
+    }
   }
 
   handleToggleMobileMenu = () => {
@@ -32,6 +39,8 @@ export default class MainLayout extends React.PureComponent {
       isMobileMenuOpen: false,
     }))
   };
+
+  handleTocClick = () => this.setState({ isMobileMenuOpen: false });
 
   render() {
     const { children, toc, mods: { loading }, error } = this.props;
@@ -52,7 +61,7 @@ export default class MainLayout extends React.PureComponent {
           {
             !loading && (
               <nav aria-label="Main menu">
-                {toc}
+                <Contents list={toc.sections} headline={toc.headline} onClick={this.handleTocClick}/>
               </nav>
             )
           }
@@ -80,7 +89,7 @@ export default class MainLayout extends React.PureComponent {
 
 MainLayout.propTypes = {
   children: PropTypes.node,
-  toc: PropTypes.node,
+  toc: PropTypes.object,
   error: PropTypes.shape({
     status: PropTypes.number,
     info: PropTypes.string,
@@ -89,3 +98,5 @@ MainLayout.propTypes = {
     loading: PropTypes.bool,
   }),
 };
+
+export default withRouter(MainLayout);

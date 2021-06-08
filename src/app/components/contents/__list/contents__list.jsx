@@ -5,7 +5,7 @@ import Link from 'app/components/link';
 import List, { List__Item } from 'app/components/list';
 
 const Contents__List = props => {
-  const { item } = props;
+  const { item, onClick } = props;
   let list = null;
 
   if (item.children.length) {
@@ -13,7 +13,7 @@ const Contents__List = props => {
       <List mods={{ type: 'primary'}}>
         {
           item.children.map(i => (
-            <Contents__List item={i} key={i.index} />
+            <Contents__List item={i} key={i.index} onClick={onClick}/>
           ))
         }
       </List>
@@ -27,6 +27,7 @@ const Contents__List = props => {
         activeClassName="link_active"
         to={`#${item.anchor}`}
         isActive={(match, location) => location.hash === `#${item.anchor}`}
+        onClick={onClick}
       >
         {/* use dangerouslySetInnerHTML because could be markup in response */}
         <span dangerouslySetInnerHTML={{__html: item.name}}/>
@@ -38,6 +39,7 @@ const Contents__List = props => {
 };
 
 Contents__List.propTypes = {
+  onClick: PropTypes.func,
   item: PropTypes.shape({
     level: PropTypes.number,
     index: PropTypes.string.isRequired,
