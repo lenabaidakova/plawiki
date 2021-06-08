@@ -7,7 +7,7 @@
     'sidebar';
 
   @include respond-to($tablet) {
-    grid-template-columns: minmax(296px, 30vh) minmax(0, 1fr);
+    grid-template-columns: minmax(296px, 30vh) minmax(0, 1000px);
     grid-template-areas: 'header search'
       'sidebar main';
   }

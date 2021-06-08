@@ -19,7 +19,8 @@
     position: sticky;
     top: 0;
     visibility: visible;
-    height: 100vh;
+    height: auto;
+    max-height: 100vh;
   }
 
   @include respond-to($desktop) {
