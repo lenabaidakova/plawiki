@@ -5,6 +5,8 @@ import Autocomplete from 'app/components/autocomplete';
 import queryBuilder from 'app/utils/query-builder';
 import fetchWrapper from 'app/utils/fetch-wrapper';
 
+const SEARCH_ROUTE = '/search/';
+
 export default class Search extends React.Component {
   state = {
     value: '',
@@ -28,21 +30,22 @@ export default class Search extends React.Component {
       format: 'json',
       list: 'prefixsearch',
       pssearch: value,
+      formatversion: '2',
     };
 
     try {
       const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
       const options = data.query.prefixsearch.map(({ title }) => ({ title, link: `/wiki/${title}` }));
 
+      options.push({
+        title: 'Show all results',
+        link: `${SEARCH_ROUTE}${value}`,
+      });
+
       this.setState({ options });
     } catch (e) {
       console.error(e); // todo: show error in ui
     }
-  };
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.onSearch();
   };
 
   render() {
@@ -51,7 +54,6 @@ export default class Search extends React.Component {
     return (
       <form
         className={b('search', this.props)}
-        onSubmit={this.onSubmit}
       >
         <Autocomplete
           onChange={this.onChange}

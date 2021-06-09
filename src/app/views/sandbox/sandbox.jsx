@@ -9,7 +9,10 @@ import Hamburger from 'app/components/hamburger';
 import Input from 'app/components/input';
 import List, { List__Item } from 'app/components/list';
 import Logo from 'app/components/logo';
-import Error from 'app/components/error';
+import Error from 'app/components/error'
+import Mark from 'app/components/mark';
+import Card from 'app/components/card';
+import Meta from 'app/components/meta';
 
 const autocompleteDemoData = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
 
@@ -102,6 +105,14 @@ export default class Sandbox extends React.Component {
         </section>
 
         <section className="sandbox__section">
+          <h2>Mark</h2>
+
+          <div className="sandbox__component">
+            <Mark mods={{ type: 'primary' }}>I'm highlighted text!</Mark>
+          </div>
+        </section>
+
+        <section className="sandbox__section">
           <h2>Hamburger</h2>
 
           <div className="sandbox__component">
@@ -126,11 +137,10 @@ export default class Sandbox extends React.Component {
 
           <div className="sandbox__component">
             <Input
-              mods={{ type: 'search' }}
+              mods={{ icon: 'magnifier' }}
               value={inputSearchValue}
               onChange={this.onSearchInputChange}
-              placeholder="Enter your name"
-              onButtonClick={() => alert('Have a nice day!')}
+              placeholder="Enter something"
             />
           </div>
         </section>
@@ -140,18 +150,6 @@ export default class Sandbox extends React.Component {
 
           <div className="sandbox__component">
             <Accordion summary="Wombats aren’t as small as you might think!">
-              An adult wombat usually grows to about a metre long – the same as a medium-sized dog. They can
-              weigh up to 40 kilograms, and have wide, strong feet which are great for digging! <Link
-              href="https://www.natgeokids.com/ie/discover/animals/general-animals/facts-about-wombats/">More info</Link>
-            </Accordion>
-          </div>
-
-          <p>
-            On default the accordion is open. But it can be used props <code>isExpanded</code> to change this behaviour.
-          </p>
-
-          <div className="sandbox__component">
-            <Accordion summary="Wombats aren’t as small as you might think!" isExpanded={false}>
               An adult wombat usually grows to about a metre long – the same as a medium-sized dog. They can
               weigh up to 40 kilograms, and have wide, strong feet which are great for digging! <Link
               href="https://www.natgeokids.com/ie/discover/animals/general-animals/facts-about-wombats/">More info</Link>
@@ -220,6 +218,10 @@ export default class Sandbox extends React.Component {
 
           <div className="sandbox__component">
             <Link mods={{ type: 'primary' }} to="nowhere">Primary link</Link>
+          </div>
+
+          <div className="sandbox__component">
+            <Link mods={{ type: 'secondary' }} to="nowhere">Secondary link</Link>
           </div>
 
           <div className="sandbox__component">
@@ -308,6 +310,45 @@ export default class Sandbox extends React.Component {
             <Error info="Page not found" status={404}/>
           </div>
         </section>
+
+        <section className="sandbox__section">
+          <h2>Card</h2>
+
+          <div className="sandbox__component">
+            <Card
+              mods={{ type: 'primary' }}
+              headline="Facts about koalas"
+              href="https://www.natgeokids.com/ie/discover/animals/general-animals/ten-facts-about-koalas/"
+            >
+              Koala’s grow up to become big eaters, shifting up to one kilogram of eucalyptus leaves in a day!
+              They are fussy, too, and will select the most nutritious and tastiest leaves from the trees where
+              they live.
+            </Card>
+          </div>
+
+          <p>We can add some meta information</p>
+
+          <div className="sandbox__component">
+            <Card
+              mods={{ type: 'primary' }}
+              headline="Meerkat facts"
+              href="https://www.natgeokids.com/ie/discover/animals/general-animals/meerkat-facts/"
+              meta={['5,653 Likes', '1324 words']}
+            >
+              Meerkats live in the deserts and grasslands of the southern tip of Africa. They are super cute,
+              with bushy, brown-striped fur, a small, pointed face and large eyes surrounded by dark patches.
+            </Card>
+          </div>
+        </section>
+
+        <section className="sandbox__section">
+          <h2>Meta</h2>
+
+          <div className="sandbox__component">
+            <Meta items={['5,653 Likes', '1324 words']}/>
+          </div>
+        </section>
+
       </div>
     );
   }

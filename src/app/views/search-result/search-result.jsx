@@ -1,12 +1,16 @@
 import React from 'react';
 
 import MainLayout from 'app/components/main-layout';
-import Link from 'app/components/link';
+import Card from 'app/components/card';
+
+import queryBuilder from 'app/utils/query-builder';
+import fetchWrapper from 'app/utils/fetch-wrapper';
 
 export default class SearchResult extends React.Component {
   state = {
     isLoading: false,
     list: [],
+    error: {},
   };
 
   componentDidMount() {
@@ -19,44 +23,77 @@ export default class SearchResult extends React.Component {
     }
   }
 
-  getSearchResult = (pageid) => {
+  getSearchResult = async title => {
+    // todo: add ability to show more than 10 results
     this.setState({ isLoading: true });
 
-    // api https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bsearch
-    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=search&srsearch=${pageid}`)
-      .then(response => response.json())
-      .then(data => {
-        const list = [];
+    const params = {
+      origin: '*',
+      action: 'query',
+      format: 'json',
+      formatversion: '2',
+      list: 'search',
+      srsearch: title,
+    };
 
-        data.query.search.forEach(({ pageid, snippet, title}) => {
-          list.push({ pageid, snippet, title});
-        });
+    const error = {};
 
-        this.setState({ list, isLoading: false });
-      })
-  };
+    try {
+      // api https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bsearch
+      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
+      const list = [];
 
-  renderContent = (sections) => {
+      data.query.search.forEach(item => list.push(item));
 
+      if (!list.length) {
+        error.info = "Such a page doesn't exist";
+      }
+
+      this.setState({ isLoading: false, error, list });
+
+    } catch (e) {
+
+      console.error(e);
+
+      const error = {
+        status: e.status,
+        info: e.error?.info || e.info || 'Something was wrong. Try later'
+      };
+
+      this.setState({ isLoading: false, error });
+    }
   };
 
   render() {
-    const { isLoading, list } = this.state;
-
-    console.dir(list);
+    const { isLoading, list, error } = this.state;
 
     return (
       <MainLayout
         mods={{ loading: isLoading }}
+        error={error}
       >
         {
-          list.map(item => (
-            <div key={item.pageid}>
-              <Link to={`/wiki/${item.title}`}>{item.title}</Link>
+          list.map(({ pageid, title, snippet, size, timestamp, wordcount }) => {
+            const date = new Date(timestamp).toLocaleString();
+            const sizeInKb = Math.round(size / 1000);
+            const metaItems = [
+              `${wordcount} words`,
+              `${sizeInKb} KB`,
+              date,
+            ];
 
-              <div dangerouslySetInnerHTML={{__html: item.snippet}}/>
-            </div>
-          ))
+            return (
+              <Card
+                key={pageid}
+                to={`/wiki/${title}`}
+                headline={title}
+                meta={metaItems}
+              >
+                {/* use dangerouslySetInnerHTML because could be markup in response */}
+                <span dangerouslySetInnerHTML={{__html: snippet}}/>...
+              </Card>
+            )
+          })
         }
       </MainLayout>
     );

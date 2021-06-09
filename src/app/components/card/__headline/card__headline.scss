@@ -1,0 +1,9 @@
+@import './../card.vars';
+
+.#{$b}__headline {
+  margin: 0 0 $offset;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+  border: none; // reset inherited styles from Wiki
+}

@@ -47,7 +47,7 @@ export default class Article extends React.Component {
     };
 
     try {
-      const data = await fetchWrapper(`http://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
+      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
 
       mw.config.set(data.parse.jsconfigvars);
 

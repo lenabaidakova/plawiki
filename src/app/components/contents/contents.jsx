@@ -15,7 +15,7 @@ const Contents = props => {
         <List mods={{ type: 'primary'}}>
           {
             list.map((item, index) => (
-              <Contents__List item={item} key={index} onClick={onClick}/>
+              <Contents__List item={item} key={`${index}_${item.name}`} onClick={onClick}/>
             ))
           }
         </List>

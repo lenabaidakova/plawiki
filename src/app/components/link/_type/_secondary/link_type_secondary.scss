@@ -1,0 +1,9 @@
+.#{$b}_type_secondary {
+  text-decoration: underline;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    color: $blue;
+  }
+}

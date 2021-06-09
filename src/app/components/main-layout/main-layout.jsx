@@ -8,6 +8,8 @@ import SVGIcon from 'app/components/svg-icon';
 import Search from 'app/components/search';
 import Error from 'app/components/error';
 import Contents from 'app/components/contents';
+import Link from 'app/components/link';
+import List, { List__Item } from 'app/components/list';
 
 import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
@@ -24,7 +26,16 @@ class MainLayout extends React.PureComponent {
     if (currentLocation.hash !== prevLocation.hash) {
       scrollToAnchor();
     }
+
+    if (currentLocation !== prevLocation) {
+      this.hideMenu();
+      this.hideSearch();
+    }
   }
+
+  hideMenu = () => this.setState({ isMobileMenuOpen: false });
+
+  hideSearch = () => this.setState({ isMobileSearchVisible: false });
 
   handleToggleMobileMenu = () => {
     this.setState(prevState => ({
@@ -40,14 +51,14 @@ class MainLayout extends React.PureComponent {
     }))
   };
 
-  handleTocClick = () => this.setState({ isMobileMenuOpen: false });
+  handleTocClick = () => this.hideMenu();
 
   render() {
     const { children, toc, mods: { loading }, error } = this.props;
     const { isMobileMenuOpen, isMobileSearchVisible } = this.state;
 
     return (
-      <Page mods={{ loading, error: !!error }}>
+      <Page mods={{ loading, error: !!error.info }}>
         <Page__Header
           onToggleMobileMenu={this.handleToggleMobileMenu}
           isMobileMenuOpen={isMobileMenuOpen}
@@ -61,7 +72,21 @@ class MainLayout extends React.PureComponent {
           {
             !loading && (
               <nav aria-label="Main menu">
-                <Contents list={toc.sections} headline={toc.headline} onClick={this.handleTocClick}/>
+                <List mix="page__nav">
+                  <List__Item>
+                    <Link mods={{ type: 'primary' }} to="/wiki/Portal:Current_events">Current events</Link>
+                  </List__Item>
+
+                  <List__Item>
+                    <Link mods={{ type: 'primary' }} to="/wiki/Wikipedia:Contents/Portals">Portals</Link>
+                  </List__Item>
+                </List>
+
+                {
+                  !!toc?.sections?.length && (
+                    <Contents list={toc.sections} headline={toc.headline} onClick={this.handleTocClick}/>
+                  )
+                }
               </nav>
             )
           }
@@ -86,6 +111,11 @@ class MainLayout extends React.PureComponent {
     );
   }
 }
+
+MainLayout.defaultProps = {
+  toc: {},
+  error: {},
+};
 
 MainLayout.propTypes = {
   children: PropTypes.node,

@@ -13,7 +13,7 @@ const Contents__List = props => {
       <List mods={{ type: 'primary'}}>
         {
           item.children.map(i => (
-            <Contents__List item={i} key={i.index} onClick={onClick}/>
+            <Contents__List item={i} key={`${i.index}_${i.name}`} onClick={onClick}/>
           ))
         }
       </List>
