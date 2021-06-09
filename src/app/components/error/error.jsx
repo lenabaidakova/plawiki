@@ -17,7 +17,7 @@ const Error = props => {
       <img
         className="error__image"
         role="presentation"
-        alt="Robot with text 'Error'"
+        alt="Confused robot"
         src={require('./__image/error__image.svg')}
       />
     </div>
