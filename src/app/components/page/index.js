@@ -8,6 +8,7 @@ require('./__aside/_visible/page__aside_visible.scss');
 
 require('./__logo/page__logo.scss');
 require('./__main/page__main.scss');
+require('./__nav/page__nav.scss');
 
 require('./__search/page__search.scss');
 require('./__search/_visible/page__search_visible.scss');

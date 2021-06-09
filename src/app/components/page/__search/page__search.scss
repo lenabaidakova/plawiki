@@ -14,10 +14,10 @@
   transition: top $searchTransitionDuration 0s, visibility 0s $searchTransitionDuration;
 
   @include respond-to($tablet) {
-    display: block;
     flex: 1;
     position: sticky;
     top: 0;
+    visibility: visible;
     width: auto;
     padding: 0 $offsetHrz $offsetVrt / 2;
   }

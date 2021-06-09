@@ -6,6 +6,6 @@
   padding: 0 $offsetHrz / 2;
 
   @include respond-to($tablet) {
-    padding: 0 $offsetHrz;
+    padding: $offsetHrz / 2 $offsetHrz;
   }
 }

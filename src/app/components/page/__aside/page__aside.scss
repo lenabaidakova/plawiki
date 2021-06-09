@@ -11,7 +11,7 @@
   box-sizing: border-box;
   width: 100%;
   height: calc(100vh - #{$headerHeight});
-  padding: 0 $offsetHrz / 2;
+  padding: $offsetHrz / 2;
   background: $greyLight;
   transition: left $asideTransitionDuration 0s, visibility 0s $asideTransitionDuration;
 
@@ -21,9 +21,6 @@
     visibility: visible;
     height: auto;
     max-height: 100vh;
-  }
-
-  @include respond-to($desktop) {
-    padding: 0 $offsetHrz;
+    padding: $offsetHrz / 2;
   }
 }
