@@ -2,5 +2,7 @@
   box-sizing: border-box;
   padding: 16px;
   text-align: center;
-  color: inherit;
+  /* !important is a necessary measure due to conflicts with Wikipedia styles */
+  /* stylelint-disable declaration-no-important */
+  color: inherit !important;
 }
