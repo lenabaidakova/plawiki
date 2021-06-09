@@ -27,7 +27,7 @@ export default class Article extends React.Component {
   }
 
   getPage = async (title) => {
-    this.setState({isLoading: true});
+    this.setState({ isLoading: true, error: {} });
 
     // API doc https://www.mediawiki.org/wiki/API:Parsing_wikitext
 
