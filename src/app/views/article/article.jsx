@@ -8,6 +8,8 @@ import queryBuilder from 'app/utils/query-builder';
 import fetchWrapper from 'app/utils/fetch-wrapper';
 import scrollToAnchor from 'app/utils/scroll-to-anchor';
 
+import { apiUserAgent } from 'app/constants/common';
+
 export default class Article extends React.Component {
   state = {
     sections: [],
@@ -52,7 +54,7 @@ export default class Article extends React.Component {
       // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw
       await import(/* webpackChunkName: "mw" */'app/vendors/mw');
 
-      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
+      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`, apiUserAgent);
 
       mw.config.set(data.parse.jsconfigvars);
 

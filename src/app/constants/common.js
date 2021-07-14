@@ -10,3 +10,9 @@ export const KEY = {
 };
 
 export const HEADER_ID = 'header';
+
+export const apiUserAgent = {
+  headers: {
+    'Api-User-Agent': 'Plawiki/1.0 (lena.baydakova@gmail.com) react/17.0.2'
+  },
+};

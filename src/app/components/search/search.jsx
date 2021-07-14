@@ -5,6 +5,8 @@ import Autocomplete from 'app/components/autocomplete';
 import queryBuilder from 'app/utils/query-builder';
 import fetchWrapper from 'app/utils/fetch-wrapper';
 
+import { apiUserAgent } from 'app/constants/common';
+
 const SEARCH_ROUTE = '/search/';
 
 export default class Search extends React.Component {
@@ -34,7 +36,7 @@ export default class Search extends React.Component {
     };
 
     try {
-      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
+      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`, apiUserAgent);
       const options = data.query.prefixsearch.map(({ title }) => ({ title, link: `/wiki/${title}` }));
 
       options.push({

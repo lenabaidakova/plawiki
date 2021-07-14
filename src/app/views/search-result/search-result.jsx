@@ -6,6 +6,8 @@ import Card from 'app/components/card';
 import queryBuilder from 'app/utils/query-builder';
 import fetchWrapper from 'app/utils/fetch-wrapper';
 
+import { apiUserAgent } from 'app/constants/common';
+
 export default class SearchResult extends React.Component {
   state = {
     isLoading: false,
@@ -40,7 +42,7 @@ export default class SearchResult extends React.Component {
 
     try {
       // api https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bsearch
-      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
+      const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`, apiUserAgent);
       const list = [];
 
       data.query.search.forEach(item => list.push(item));

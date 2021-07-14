@@ -1,7 +1,7 @@
 {
-  "name": "wiki-redesign",
+  "name": "plawiki",
   "version": "1.0.0",
-  "description": "Playing with Wikipedia API",
+  "description": "Playing with MediaWiki API",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --mode=development --hot --progress",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lenabaidakova/wiki-redesign.git"
+    "url": "git+https://github.com/lenabaidakova/plawiki.git"
   },
   "author": "e.baidakova",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lenabaidakova/wiki-redesign/issues"
+    "url": "https://github.com/lenabaidakova/plawiki/issues"
   },
-  "homepage": "https://lenabaidakova.github.io/wiki-redesign",
+  "homepage": "https://lenabaidakova.github.io/plawiki",
   "devDependencies": {
     "@babel/core": "7.13.13",
     "@babel/preset-env": "7.13.12",
@@ -68,7 +68,10 @@
   },
   "jest": {
     "automock": false,
-    "moduleDirectories": ["node_modules", "src"],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "setupFiles": [
       "./src/tests/setupJest.js"
     ],
