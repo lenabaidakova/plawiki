@@ -28,42 +28,16 @@ module.exports = (env, argv) => merge(
         {
           test: /\.jsx?$/,
           exclude: [/node_modules/, /app\/vendors/],
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', {
-                useBuiltIns: 'usage',
-                corejs: 3,
-              }],
-              '@babel/react',
-            ],
-            plugins: [
-              '@babel/plugin-transform-modules-commonjs',
-              '@babel/plugin-proposal-object-rest-spread',
-              '@babel/plugin-proposal-class-properties',
-              '@babel/plugin-proposal-optional-chaining',
-            ],
-          },
+          use: 'babel-loader',
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg)$/,
           exclude: /svg-icon__symbol/,
-          use: [
-            {
-              loader: 'file-loader?name=images/[hash].[ext]',
-              options: {
-                esModule: false,
-              },
-            },
-          ],
+          use: 'file-loader?name=images/[hash].[ext]',
         },
         {
           test: /\.(woff|woff2)$/,
-          use: [
-            {
-              loader: 'file-loader?name=fonts/[hash].[ext]',
-            },
-          ],
+          use: 'file-loader?name=fonts/[hash].[ext]',
         },
         {
           test: /svg-icon__symbol.+\.svg$/,

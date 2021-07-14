@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
