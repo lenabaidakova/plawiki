@@ -11,7 +11,7 @@
   box-sizing: border-box;
   width: 100%;
   height: calc(100vh - #{$headerHeight});
-  padding: $offsetHrz / 2;
+  padding: $offsetHrz * .5;
   background: $greyLight;
   transition: left $asideTransitionDuration 0s, visibility 0s $asideTransitionDuration;
 
@@ -21,6 +21,6 @@
     visibility: visible;
     height: auto;
     max-height: 100vh;
-    padding: $offsetHrz / 2;
+    padding: $offsetHrz * .5;
   }
 }

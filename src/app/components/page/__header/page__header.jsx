@@ -8,7 +8,7 @@ import Button from 'app/components/button';
 import { HEADER_ID } from 'app/constants/common';
 
 const Page__Header = props => {
-  const { isMobileMenuOpen, onToggleMobileMenu, onToggleSearch } = props;
+  const { isMobileMenuOpen, isMobileSearchVisible, onToggleMobileMenu, onToggleSearch } = props;
   return (
     <header className="page__header" id={HEADER_ID}>
       <Hamburger
@@ -19,7 +19,11 @@ const Page__Header = props => {
 
       <Logo mix="page__logo"/>
 
-      <Button mods={{ icon: 'magnifier', type: 'primary' }} onClick={onToggleSearch} />
+      <Button
+        mods={{ icon: 'magnifier', type: 'primary' }}
+        title={isMobileSearchVisible ? "Close search field" : "Open search field"}
+        onClick={onToggleSearch}
+      />
     </header>
   );
 };

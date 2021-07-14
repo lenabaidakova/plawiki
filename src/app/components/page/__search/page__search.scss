@@ -19,6 +19,6 @@
     top: 0;
     visibility: visible;
     width: auto;
-    padding: 0 $offsetHrz $offsetVrt / 2;
+    padding: 0 $offsetHrz $offsetVrt * .5;
   }
 }

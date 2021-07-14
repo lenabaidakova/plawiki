@@ -9,7 +9,7 @@
   top: 0;
   box-sizing: border-box;
   height: $headerHeight;
-  padding: $offsetVrt / 2 $offsetHrz / 2;
+  padding: $offsetVrt * .5 $offsetHrz * .5;
   box-shadow: 0 4px 4px 0 $greyLight;
   background: $greyLight;
 

@@ -61,8 +61,9 @@ class MainLayout extends React.PureComponent {
       <Page mods={{ loading, error: !!error.info }}>
         <Page__Header
           onToggleMobileMenu={this.handleToggleMobileMenu}
-          isMobileMenuOpen={isMobileMenuOpen}
           onToggleSearch={this.handleToggleSearch}
+          isMobileMenuOpen={isMobileMenuOpen}
+          isMobileSearchVisible={isMobileSearchVisible}
         />
 
         {/* todo: add autofocus when open search on mobile */}

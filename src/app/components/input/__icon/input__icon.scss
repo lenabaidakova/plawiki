@@ -3,7 +3,7 @@
 .#{$b}__icon {
   position: absolute;
   top: 0;
-  left: $offset / 2;
+  left: $offset * .5;
   width: $iconWidth;
   height: 100%;
   color: $greyDark;

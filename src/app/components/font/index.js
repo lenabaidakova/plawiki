@@ -1,1 +1,4 @@
-require('./__pt-serif/font__pt-serif.scss');
+import(/* webpackPreload: true */
+  /* webpackChunkName: "fonts" */
+  './__pt-serif/font__pt-serif.scss'
+);

@@ -3,9 +3,9 @@
 .#{$b}__main {
   grid-area: main;
   box-sizing: border-box;
-  padding: 0 $offsetHrz / 2;
+  padding: 0 $offsetHrz * .5;
 
   @include respond-to($tablet) {
-    padding: $offsetHrz / 2 $offsetHrz;
+    padding: $offsetHrz * .5 $offsetHrz;
   }
 }
