@@ -1,3 +1,3 @@
-export { default } from './page__header';
+import './page__header.scss';
 
-require('./page__header.scss');
+export { default } from './page__header';

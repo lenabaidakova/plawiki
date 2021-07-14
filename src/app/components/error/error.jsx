@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import errorImage from './__image/error__image.svg';
+
 const Error = props => {
   const { status, info } = props;
 
@@ -18,7 +20,7 @@ const Error = props => {
         className="error__image"
         role="presentation"
         alt="Confused robot"
-        src={require('./__image/error__image.svg')}
+        src={errorImage}
       />
     </div>
   );

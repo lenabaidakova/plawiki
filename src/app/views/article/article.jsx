@@ -47,6 +47,11 @@ export default class Article extends React.Component {
     };
 
     try {
+      // mw module for loading modules from Wikipedia
+      // https://www.mediawiki.org/wiki/ResourceLoader/Core_modules
+      // https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw
+      await import(/* webpackChunkName: "mw" */'app/vendors/mw');
+
       const data = await fetchWrapper(`https://en.wikipedia.org/w/api.php?${queryBuilder(params)}`);
 
       mw.config.set(data.parse.jsconfigvars);

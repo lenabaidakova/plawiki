@@ -1,4 +1,4 @@
-export { default } from './link';
+import './_type/_primary/link_type_primary.scss';
+import './_type/_secondary/link_type_secondary.scss';
 
-require('./_type/_primary/link_type_primary.scss');
-require('./_type/_secondary/link_type_secondary.scss');
+export { default } from './link';

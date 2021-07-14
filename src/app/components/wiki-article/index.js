@@ -1,3 +1,3 @@
-export { default } from './wiki-article';
+import './wiki-article.scss';
 
-require('./wiki-article.scss');
+export { default } from './wiki-article';

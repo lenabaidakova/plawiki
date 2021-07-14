@@ -129,10 +129,10 @@ class Autocomplete extends React.Component {
     this.props.onChange?.(value);
   };
 
-  handleOptionClick = value => {
+  handleOptionClick = e => {
     this.setState({ isOpen: false });
 
-    this.props.onChange?.(value);
+    this.props.onChange?.(e.target.dataset.title);
   };
 
   scrollToSelectedItem = () => {
@@ -181,7 +181,8 @@ class Autocomplete extends React.Component {
                 <li
                   className={b('autocomplete__option', {}, { selected: isItemSelected })}
                   key={`${this.listId}__option-${index}`}
-                  onClick={() => this.handleOptionClick(item.title)}
+                  onClick={this.handleOptionClick}
+                  data-title={item.title}
                   role="option"
                   tabIndex="-1"
                   aria-selected={isItemSelected}

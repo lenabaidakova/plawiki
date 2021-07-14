@@ -1,3 +1,3 @@
-export { default } from './logo';
+import './logo.scss';
 
-require('./logo.scss');
+export { default } from './logo';

@@ -1,3 +1,3 @@
-export { default } from './svg-icon';
+import './svg-icon.scss';
 
-require('./svg-icon.scss');
+export { default } from './svg-icon';

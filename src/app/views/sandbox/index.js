@@ -1,3 +1,3 @@
-export { default } from './sandbox';
+import './sandbox.scss';
 
-require('./sandbox.scss');
+export { default } from './sandbox';

@@ -1,3 +1,3 @@
-import 'app/components/font';
+import './document.scss';
 
-require('./document.scss');
+import 'app/components/font';
