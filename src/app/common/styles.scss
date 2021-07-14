@@ -1,0 +1,7 @@
+// add this styles to each scss file with additionalData option
+// https://webpack.js.org/loaders/sass-loader/#additionaldata
+
+@import './styles/placeholder';
+@import './styles/respond-to';
+@import './styles/vars';
+@import './styles/visually-hidden';
