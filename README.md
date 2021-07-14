@@ -3,13 +3,7 @@
 Single-page web application for searching information in Wikipedia. Built on [React](https://reactjs.org/).
 This project is a result of the research of [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page).
 
-## Motivation
-
-## ⚡ Quick start
-
-Uses node v14.17.0 (npm v6.14.13).
-
-### 🐳 Docker-way to start production build
+### 🐳 Docker-way to run production build
 
 ```bash
 docker build -t wiki .
@@ -18,7 +12,9 @@ docker run -p 8080:80 wiki
 
 Starts on http://localhost:8080/
 
-### Development
+### ⚡ Development
+
+Uses node v14.17.0 (npm v6.14.13).
 
 ```bash
 npm i
