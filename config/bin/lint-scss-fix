@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-stylelint "src/**/*.scss" --syntax --fix scss --cache --config node_modules/@funboxteam/scss-lint-config/.stylelintrc

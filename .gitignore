@@ -51,3 +51,6 @@ Session.vim
 # -- Linters --
 .eslintcache
 .stylelintcache
+
+# -- Tests --
+/coverage
