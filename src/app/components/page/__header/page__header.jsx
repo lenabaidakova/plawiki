@@ -21,6 +21,7 @@ const Page__Header = props => {
 
       <Button
         mods={{ icon: 'magnifier', type: 'primary' }}
+        mix="page__search-button"
         title={isMobileSearchVisible ? "Close search field" : "Open search field"}
         onClick={onToggleSearch}
       />

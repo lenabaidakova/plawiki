@@ -18,7 +18,8 @@
     height: auto;
     padding: 0 $offsetVrt 0;
 
-    .#{$b}__hamburger {
+    .#{$b}__hamburger,
+    .#{$b}__search-button {
       display: none;
     }
   }
