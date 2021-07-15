@@ -1,5 +1,7 @@
 import React from 'react';
 
+import DOMPurify from 'dompurify';
+
 import MainLayout from 'app/components/main-layout';
 import WikiArticle from 'app/components/wiki-article';
 import Contents from 'app/components/contents';
@@ -65,7 +67,9 @@ export default class Article extends React.Component {
       );
 
       this.renderContent(data.parse.sections);
-      this.setState({ html: data.parse.text, isLoading: false });
+
+      const sanitizedText = DOMPurify.sanitize(data.parse.text);
+      this.setState({ html: sanitizedText, isLoading: false });
       scrollToAnchor();
 
     } catch(e) {

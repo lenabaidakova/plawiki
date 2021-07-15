@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import DOMPurify from 'dompurify';
+
 import Link from 'app/components/link';
 import List, { List__Item } from 'app/components/list';
 
 const Contents__List = props => {
   const { item, onClick } = props;
+  const sanitizedName = DOMPurify.sanitize(item.name);
   let list = null;
 
   if (item.children.length) {
@@ -30,7 +33,7 @@ const Contents__List = props => {
         onClick={onClick}
       >
         {/* use dangerouslySetInnerHTML because could be markup in response */}
-        <span dangerouslySetInnerHTML={{__html: item.name}}/>
+        <span dangerouslySetInnerHTML={{__html: sanitizedName}}/>
       </Link>
 
       {list}

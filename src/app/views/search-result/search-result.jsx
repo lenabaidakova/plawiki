@@ -1,5 +1,7 @@
 import React from 'react';
 
+import DOMPurify from 'dompurify';
+
 import MainLayout from 'app/components/main-layout';
 import Card from 'app/components/card';
 
@@ -83,6 +85,7 @@ export default class SearchResult extends React.Component {
               `${sizeInKb} KB`,
               date,
             ];
+            const sanitizedSnippet = DOMPurify.sanitize(snippet);
 
             return (
               <Card
@@ -92,7 +95,7 @@ export default class SearchResult extends React.Component {
                 meta={metaItems}
               >
                 {/* use dangerouslySetInnerHTML because could be markup in response */}
-                <span dangerouslySetInnerHTML={{__html: snippet}}/>...
+                <span dangerouslySetInnerHTML={{__html: sanitizedSnippet}}/>...
               </Card>
             )
           })
