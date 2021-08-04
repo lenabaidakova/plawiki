@@ -5,9 +5,9 @@ import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
 
 import ScrollToTop from 'app/components/scroll-to-top';
 
-const Article = lazy(() => import(/* webpackChunkName: "article-route" */ 'app/views/article'));
-const Sandbox = lazy(() => import(/* webpackChunkName: "sandbox-route" */ 'app/views/sandbox'));
-const SearchResult = lazy(() => import(/* webpackChunkName: "search-result-route" */ 'app/views/search-result'));
+const Article = lazy(() => import(/* webpackChunkName: "article-route" */ 'app/pages/article'));
+const Sandbox = lazy(() => import(/* webpackChunkName: "sandbox-route" */ 'app/pages/sandbox'));
+const SearchResult = lazy(() => import(/* webpackChunkName: "search-result-route" */ 'app/pages/search-result'));
 
 const AppStates = () => (
   <BrowserRouter>

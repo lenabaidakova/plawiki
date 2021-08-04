@@ -43,7 +43,7 @@ export default class Article extends React.Component {
       prop: 'text|modules|jsconfigvars|sections',
       disableeditsection: true,
       page: title,
-      useskin: 'modern',
+      useskin: 'monobook',
       disabletoc: true,
       mobileformat: true,
       mainpage: true,
